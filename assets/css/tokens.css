@@ -1,0 +1,84 @@
+/* ============================================================
+   青春留名 · 设计变量
+   方向：纸上的档案 · 朱砂与墨
+   ============================================================ */
+
+:root {
+  /* 纸张与墨色 */
+  --paper: #f4efe5;
+  --paper-raised: #faf6ee;
+  --paper-deep: #e8e0d2;
+  --paper-shade: #d2c4b0;
+  --paper-image: url("../img/paper-natural.jpg");
+  --paper-image-warm: url("../img/paper-warm.jpg");
+  --ink: #1f1d19;
+  --ink-2: #4f4a42;
+  --ink-3: #766f65;
+  --ink-4: #a69d8f;
+
+  /* 朱砂 */
+  --cinnabar: #a63b2d;
+  --cinnabar-deep: #7c2a20;
+  --cinnabar-light: #c76b5c;
+  --cinnabar-wash: #ead2c9;
+
+  /* 褪青灰 */
+  --celadon: #6f827d;
+  --celadon-deep: #33433f;
+  --celadon-mid: #50635e;
+  --celadon-wash: #dbe1da;
+  --celadon-pale: #edf0ea;
+
+  /* 线与状态 */
+  --line: rgba(31, 29, 25, 0.16);
+  --line-soft: rgba(31, 29, 25, 0.09);
+  --line-strong: rgba(31, 29, 25, 0.3);
+  --focus: #0b6b63;
+  --focus-on-dark: #f0c7a8;
+
+  /* 字体角色 */
+  --font-display: "Source Han Serif SC", "Noto Serif CJK SC", "Songti SC",
+    "STSong", "SimSun", serif;
+  --font-body: "Source Han Serif SC", "Noto Serif CJK SC", "Songti SC",
+    "STSong", "SimSun", serif;
+  --font-ui: "Source Han Sans SC", "Noto Sans CJK SC", "Microsoft YaHei UI",
+    "Microsoft YaHei", "PingFang SC", sans-serif;
+  --font-mono: "Cascadia Mono", "SFMono-Regular", "Consolas", "Liberation Mono",
+    monospace;
+
+  /* 版式 */
+  --measure: 38rem;
+  --measure-wide: 52rem;
+  --gutter: clamp(1.25rem, 4vw, 4.5rem);
+  --shell: 90rem;
+  --rail: 4.5rem;
+  --radius: 2px;
+
+  /* 层级 */
+  --z-paper: 1;
+  --z-sticky: 40;
+  --z-rail: 60;
+  --z-header: 70;
+  --z-reader: 90;
+  --z-lightbox: 120;
+  --z-skip: 200;
+
+  /* 动效 */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-tap: 140ms;
+  --dur-ui: 240ms;
+  --dur-reveal: 680ms;
+  --dur-develop: 980ms;
+
+  /* 阅读字号，由阅读页脚本写入 */
+  --reader-size: 1.1875rem;
+  --reader-leading: 1.92;
+}
+
+@media (max-width: 900px) {
+  :root {
+    --gutter: clamp(1.125rem, 5.6vw, 2rem);
+    --rail: 0rem;
+  }
+}

@@ -1,0 +1,450 @@
+/* ============================================================
+   动效层：显影、盖章、纸张接管
+   全部以“内容已存在”为前提，动画只覆盖增强层。
+   ============================================================ */
+
+@view-transition {
+  navigation: auto;
+}
+
+html.js .intro-veil.is-stamping .intro-seal {
+  animation: introSealPress 650ms var(--ease-out) both;
+}
+
+html.js .intro-veil.is-stamping .intro-ink {
+  animation: introInkWash 1180ms var(--ease-out) 80ms both;
+}
+
+html.js .intro-veil.is-stamping .ink-bloom--a {
+  animation: introInkBlobA 1040ms var(--ease-out) 90ms both;
+}
+
+html.js .intro-veil.is-stamping .ink-bloom--b {
+  animation: introInkBlobB 1120ms var(--ease-out) 140ms both;
+}
+
+html.js .intro-veil.is-stamping .ink-bloom--c {
+  animation: introInkBlobC 1080ms var(--ease-out) 190ms both;
+}
+
+html.js .intro-veil.is-stamping .ink-bloom--red {
+  animation: introInkRed 980ms var(--ease-out) 220ms both;
+}
+
+html.js .intro-veil.is-stamping .intro-title {
+  animation: introTitleWipe 720ms var(--ease-out) 210ms both;
+}
+
+html.js .intro-veil.is-stamping .intro-sub,
+html.js .intro-veil.is-stamping .intro-line,
+html.js .intro-veil.is-stamping .intro-note {
+  animation: introCopyIn 520ms var(--ease-out) 470ms both;
+}
+
+@keyframes introSealPress {
+  0% {
+    opacity: 1;
+    transform: scale(1.12) rotate(-10deg);
+  }
+  45% {
+    opacity: 1;
+    transform: scale(0.92) rotate(-7deg);
+  }
+  72% {
+    opacity: 1;
+    transform: scale(1.03) rotate(-8.2deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(-8deg);
+  }
+}
+
+@keyframes introInkWash {
+  0% {
+    opacity: 0;
+    transform: scale(0.34) rotate(-4deg);
+  }
+  38% {
+    opacity: 0.96;
+  }
+  72% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0.56;
+    transform: scale(1.14) rotate(1deg);
+  }
+}
+
+@keyframes introInkBlobA {
+  0% {
+    opacity: 0;
+    transform: scale(0.42) rotate(9deg);
+  }
+  42% {
+    opacity: 0.86;
+  }
+  100% {
+    opacity: 0.6;
+    transform: scale(1.12) rotate(14deg) translate(-3%, 2%);
+  }
+}
+
+@keyframes introInkBlobB {
+  0% {
+    opacity: 0;
+    transform: scale(0.36) rotate(-7deg);
+  }
+  45% {
+    opacity: 0.78;
+  }
+  100% {
+    opacity: 0.55;
+    transform: scale(1.16) rotate(-12deg) translate(2%, -2%);
+  }
+}
+
+@keyframes introInkBlobC {
+  0% {
+    opacity: 0;
+    transform: scale(0.4) rotate(5deg);
+  }
+  38% {
+    opacity: 0.72;
+  }
+  100% {
+    opacity: 0.48;
+    transform: scale(1.1) rotate(9deg) translate(-2%, -3%);
+  }
+}
+
+@keyframes introInkRed {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  42% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0.42;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes introTitleWipe {
+  from {
+    clip-path: inset(0 0 100% 0);
+    transform: translateY(0.12em);
+    opacity: 0.65;
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes introCopyIn {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes introVeilLift {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-104%);
+    opacity: 0.98;
+  }
+}
+
+html.js .hero .title-line > span {
+  transform: translateY(112%);
+}
+
+html.js .hero.is-entered .title-line > span {
+  transform: translateY(0);
+  transition: transform 820ms var(--ease-out);
+}
+
+html.js .hero.is-entered .title-line:nth-child(2) > span {
+  transition-delay: 90ms;
+}
+
+html.js .hero .hero-eyebrow,
+html.js .hero .hero-deck,
+html.js .hero .hero-actions,
+html.js .hero .hero-meta {
+  opacity: 0;
+  transform: translateY(0.8rem);
+}
+
+html.js .hero.is-entered .hero-eyebrow,
+html.js .hero.is-entered .hero-deck,
+html.js .hero.is-entered .hero-actions,
+html.js .hero.is-entered .hero-meta {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 620ms var(--ease-out),
+    transform 620ms var(--ease-out);
+}
+
+html.js .hero.is-entered .hero-eyebrow {
+  transition-delay: 80ms;
+}
+
+html.js .hero.is-entered .hero-deck {
+  transition-delay: 180ms;
+}
+
+html.js .hero.is-entered .hero-actions {
+  transition-delay: 260ms;
+}
+
+html.js .hero.is-entered .hero-meta {
+  transition-delay: 340ms;
+}
+
+html.js .hero .photo-slip {
+  opacity: 0;
+  translate: 0 1.4rem;
+}
+
+html.js .hero.is-entered .photo-slip {
+  opacity: 1;
+  translate: 0 0;
+  transition:
+    opacity 700ms var(--ease-out),
+    translate 820ms var(--ease-out);
+}
+
+html.js .hero.is-entered .photo-slip--a {
+  transition-delay: 260ms;
+}
+
+html.js .hero.is-entered .photo-slip--b {
+  transition-delay: 340ms;
+}
+
+html.js .hero.is-entered .photo-slip--c {
+  transition-delay: 420ms;
+}
+
+html.js .hero .seal--hero {
+  opacity: 0;
+}
+
+html.js .hero.is-stamped .seal--hero {
+  animation: sealPress 620ms var(--ease-out) both;
+}
+
+html.js .hero.no-intro .seal--hero {
+  opacity: 1;
+  animation: none;
+  transform: rotate(-8deg);
+}
+
+html.js .hero.no-intro .title-line > span,
+html.js .hero.no-intro .hero-eyebrow,
+html.js .hero.no-intro .hero-deck,
+html.js .hero.no-intro .hero-actions,
+html.js .hero.no-intro .hero-meta,
+html.js .hero.no-intro .photo-slip {
+  opacity: 1;
+  transform: none;
+  translate: none;
+}
+
+@keyframes sealPress {
+  0% {
+    opacity: 0;
+    transform: scale(1.55) rotate(-15deg);
+  }
+  55% {
+    opacity: 1;
+    transform: scale(0.94) rotate(-7deg);
+  }
+  76% {
+    opacity: 1;
+    transform: scale(1.025) rotate(-8.4deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(-8deg);
+  }
+}
+
+/* 照片显影：以卡片为单位，只影响图片层 */
+html.js .dossier-card .card-photo,
+html.js .era-person img,
+html.js .spirit-node .node-photo {
+  --develop-opacity: 0.64;
+}
+
+html.js .dossier-card .card-photo {
+  opacity: var(--develop-opacity);
+  transition: opacity 900ms var(--ease-out);
+}
+
+html.js .dossier-card.is-developed .card-photo {
+  opacity: 1;
+}
+
+html.js .dossier-card .card-photo::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  background: rgba(244, 239, 229, 0.32);
+  opacity: 1;
+  transition: opacity 900ms var(--ease-out);
+  pointer-events: none;
+}
+
+html.js .dossier-card.is-developed .card-photo::before {
+  opacity: 0;
+}
+
+html.js .dossier-card .card-stamp {
+  opacity: 0;
+  transform: rotate(-16deg) scale(1.28);
+}
+
+html.js .dossier-card.is-developed .card-stamp {
+  opacity: 1;
+  transform: rotate(-9deg) scale(1);
+  transition:
+    opacity 260ms var(--ease-out) 280ms,
+    transform 420ms var(--ease-out) 280ms;
+}
+
+/* 纸张接管：覆盖层滑过，正稿始终在下面 */
+.paper-takeover {
+  position: absolute;
+  z-index: 8;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transform: translateX(103%);
+}
+
+.paper-takeover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(31, 29, 25, 0.018) 0 1px,
+      transparent 1px 4px
+    ),
+    var(--paper-raised);
+  box-shadow: -18px 0 40px rgba(31, 29, 25, 0.12);
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    0 100%,
+    0 93%,
+    1.2% 87%,
+    0.4% 81%,
+    1.4% 74%,
+    0.2% 66%,
+    1.1% 59%,
+    0.3% 52%,
+    1.3% 44%,
+    0.2% 37%,
+    1.2% 29%,
+    0.3% 21%,
+    1.4% 13%,
+    0.2% 6%
+  );
+}
+
+.paper-takeover.is-running {
+  animation: paperTakeover 760ms var(--ease-in-out) both;
+}
+
+@keyframes paperTakeover {
+  0% {
+    transform: translateX(103%);
+  }
+  42%,
+  58% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-103%);
+  }
+}
+
+/* 页面切换时的轻量纸面交叉，未支持时回退为普通跳转 */
+::view-transition-old(root) {
+  animation: vtOld 260ms var(--ease-out) both;
+}
+
+::view-transition-new(root) {
+  animation: vtNew 340ms var(--ease-out) both;
+}
+
+@keyframes vtOld {
+  to {
+    opacity: 0;
+    transform: translateY(-0.35rem);
+  }
+}
+
+@keyframes vtNew {
+  from {
+    opacity: 0;
+    transform: translateY(0.45rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-veil,
+  html.js .intro-veil.is-visible {
+    display: none !important;
+  }
+
+  html.js .hero .title-line > span,
+  html.js .hero .hero-eyebrow,
+  html.js .hero .hero-deck,
+  html.js .hero .hero-actions,
+  html.js .hero .hero-meta,
+  html.js .hero .photo-slip,
+  html.js .hero .seal--hero,
+  html.js .dossier-card .card-photo,
+  html.js .dossier-card .card-stamp {
+    opacity: 1;
+    transform: none;
+    translate: none;
+    animation: none;
+  }
+
+  html.js .dossier-card .card-photo::before {
+    display: none;
+  }
+
+  .paper-takeover,
+  .paper-takeover.is-running {
+    display: none;
+    animation: none;
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+}
