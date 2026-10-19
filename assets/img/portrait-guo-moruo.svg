@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000" role="img" aria-label="人物影像待补：郭">
+  <defs>
+    <pattern id="dots" width="9" height="9" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.05" fill="#35413e" opacity=".16"/>
+    </pattern>
+    <linearGradient id="light" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".34"/>
+      <stop offset=".48" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#1f1d19" stop-opacity=".12"/>
+    </linearGradient>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency=".78" numOctaves="2" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer>
+        <feFuncA type="table" tableValues="0 .16"/>
+      </feComponentTransfer>
+    </filter>
+  </defs>
+  <rect width="800" height="1000" fill="#c4cbc8"/>
+  <rect width="800" height="1000" fill="url(#dots)"/>
+  <rect x="38" y="38" width="724" height="924" fill="none" stroke="#35413e" stroke-width="1" opacity=".28"/>
+  <rect x="54" y="54" width="692" height="892" fill="none" stroke="#f6f0e5" stroke-width="1" opacity=".4"/>
+  <rect x="142" y="142" width="516" height="650" fill="none" stroke="#f2ecdf" stroke-width="3" opacity=".7"/>
+    <rect x="156" y="156" width="488" height="622" fill="none" stroke="#2c2a25" stroke-width="1" opacity=".2"/>
+  <text x="400" y="590" text-anchor="middle" font-family="Songti SC, SimSun, serif" font-size="430" fill="#35413e" opacity=".18">郭</text>
+  <path d="M92 824H708" stroke="#35413e" stroke-width="1" opacity=".32"/>
+  <text x="92" y="870" font-family="Consolas, monospace" font-size="18" letter-spacing="4" fill="#35413e" opacity=".64">影像待补 / PORTRAIT PENDING</text>
+  <text x="92" y="902" font-family="Songti SC, SimSun, serif" font-size="20" fill="#35413e" opacity=".5">国立中山大学 · 红色人物档案</text>
+  <g transform="translate(628 846) rotate(-8)">
+    <rect width="86" height="86" fill="none" stroke="#a63b2d" stroke-width="5"/>
+    <rect x="8" y="8" width="70" height="70" fill="none" stroke="#a63b2d" stroke-width="1" opacity=".7"/>
+    <text x="43" y="58" text-anchor="middle" font-family="Songti SC, SimSun, serif" font-size="42" fill="#a63b2d">郭</text>
+  </g>
+  <rect width="800" height="1000" fill="url(#light)"/>
+  <rect width="800" height="1000" filter="url(#grain)" opacity=".55"/>
+</svg>
