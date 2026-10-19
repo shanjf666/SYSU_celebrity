@@ -1,0 +1,886 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f4efe5" />
+    <meta
+      name="description"
+      content="青春留名——寻找中大的红色追光者。一间可以走进去的人物档案馆，以纸页、档案卡与人物正文呈现中山大学的红色记忆。"
+    />
+    <title>青春留名 · 寻找中大的红色追光者</title>
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/css/main.css?v=20261019g" />
+    <script>
+      document.documentElement.classList.add("js");
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#roster">跳到人物名录</a>
+    <div class="intro-veil" id="introVeil" role="dialog" aria-modal="true" aria-labelledby="introPrompt">
+      <div class="paper-sheet intro-paper" aria-hidden="true"></div>
+      <img class="torn-cutout torn-cutout--top" src="assets/img/torn-cutout-c.png" alt="" aria-hidden="true" />
+      <img class="torn-cutout torn-cutout--bottom" src="assets/img/torn-cutout-e.png" alt="" aria-hidden="true" />
+      <div class="intro-sheet">
+        <p class="intro-kicker mono">SYSU · RED ARCHIVE / 1924 — 1949</p>
+        <p class="intro-state mono">档案未启封 / CLOSED FILE</p>
+        <div class="intro-stamp-wrap">
+          <span class="intro-ink" aria-hidden="true">
+            <i class="ink-bloom ink-bloom--a"></i>
+            <i class="ink-bloom ink-bloom--b"></i>
+            <i class="ink-bloom ink-bloom--c"></i>
+            <i class="ink-bloom ink-bloom--red"></i>
+          </span>
+          <button class="intro-seal" id="introStamp" type="button" aria-label="按下印章，开启档案">
+            <span>青</span><span>春</span><span>留</span><span>名</span>
+          </button>
+        </div>
+        <p class="intro-title">青春<span>留名</span></p>
+        <p class="intro-prompt" id="introPrompt">按下印章 · 开启档案</p>
+        <p class="intro-sub">寻找中大的红色追光者</p>
+        <span class="intro-line" aria-hidden="true"></span>
+        <p class="intro-note">一页纸，一个人。请沿着编号继续往下翻。</p>
+      </div>
+      <svg class="ink-filter-defs" width="0" height="0" aria-hidden="true" focusable="false">
+        <filter id="ink-wash" x="-40%" y="-40%" width="180%" height="180%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.012 0.02" numOctaves="3" seed="7" result="noise"></feTurbulence>
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="34" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
+          <feGaussianBlur stdDeviation="2.6"></feGaussianBlur>
+        </filter>
+      </svg>
+    </div>
+    <div class="paper-grain" aria-hidden="true"></div>
+    <div class="reading-progress" aria-hidden="true"><span id="pageProgress"></span></div>
+
+    <header class="site-header" id="siteHeader">
+      <a class="brand" href="#opening" aria-label="青春留名，回到档案封面">
+        <span class="brand-mark" aria-hidden="true">青</span>
+        <span class="brand-copy">
+          <span class="brand-title">青春留名</span>
+          <span class="brand-sub">SYSU · Red Archive</span>
+        </span>
+      </a>
+      <div class="header-tools">
+        <a class="icon-button" href="#roster">
+          <span class="tool-label">人物名录</span>
+          <svg class="icon" viewBox="0 0 20 20" aria-hidden="true">
+            <path d="M4 5h12M4 10h12M4 15h8" fill="none" stroke="currentColor" stroke-width="1.4" />
+          </svg>
+        </a>
+        <button class="icon-button" id="soundToggle" type="button" aria-pressed="false" aria-label="开启声音">
+          <span class="tool-label">声音</span>
+          <svg class="icon" viewBox="0 0 20 20" aria-hidden="true">
+            <path d="M4 8h3l4-3v10l-4-3H4zM14 7.5c.9.8 1.4 1.8 1.4 3s-.5 2.2-1.4 3" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <nav class="chapter-rail" aria-label="章节导航">
+      <a class="rail-item is-current" href="#opening" data-section="opening" aria-current="location">
+        <span class="rail-no">00</span><span class="rail-name">封面</span>
+      </a>
+      <a class="rail-item" href="#preface" data-section="preface">
+        <span class="rail-no">01</span><span class="rail-name">序</span>
+      </a>
+      <a class="rail-item" href="#roster" data-section="roster">
+        <span class="rail-no">02</span><span class="rail-name">名录</span>
+      </a>
+      <a class="rail-item" href="#era" data-section="era">
+        <span class="rail-no">03</span><span class="rail-name">时代</span>
+      </a>
+      <a class="rail-item" href="#spirit" data-section="spirit">
+        <span class="rail-no">04</span><span class="rail-name">图谱</span>
+      </a>
+      <a class="rail-item" href="#coda" data-section="coda">
+        <span class="rail-no">05</span><span class="rail-name">留名</span>
+      </a>
+    </nav>
+
+    <main>
+      <!-- ================= 封面 ================= -->
+      <section class="hero" id="opening" aria-labelledby="heroTitle">
+        <div class="paper-sheet hero-sheet" aria-hidden="true"></div>
+        <img class="torn-cutout torn-cutout--top" src="assets/img/torn-cutout-e.png" alt="" aria-hidden="true" />
+        <img class="torn-cutout torn-cutout--bottom" src="assets/img/torn-cutout-c.png" alt="" aria-hidden="true" />
+        <div class="hero-inner">
+          <div class="hero-copy">
+            <div class="hero-eyebrow mono">
+              <span>SYSU · Red Archive</span>
+              <span class="dot" aria-hidden="true"></span>
+              <span>1924 — 1949</span>
+            </div>
+            <h1 class="hero-title" id="heroTitle" aria-label="青春留名">
+              <span class="title-line"><span>青春</span></span>
+              <span class="title-line"><span class="title-accent">留名</span></span>
+            </h1>
+            <p class="hero-deck">
+              寻找中大的红色追光者。从一张学籍卡、一封油印传单、一次没有退路的选择开始，重新认识那些曾在同一座校园里读书、教书、争论的人。
+            </p>
+            <div class="hero-actions">
+              <a class="action-primary" href="#roster">
+                拉开档案
+                <svg class="icon" viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </a>
+              <a class="action-quiet" href="#preface">先读序言</a>
+            </div>
+            <div class="hero-meta mono">
+              <span><strong>06</strong> 份人物样张</span>
+              <span><strong>04</strong> 个时代场景</span>
+              <span><strong>01</strong> 座校园</span>
+            </div>
+          </div>
+
+          <div class="hero-stage" aria-label="人物档案夹与待补影像">
+            <div class="stage-shadow" aria-hidden="true"></div>
+            <img class="hero-paper-scrap" src="assets/img/torn-cutout-d.png" alt="" aria-hidden="true" />
+
+            <figure class="photo-slip photo-slip--a">
+              <img src="assets/img/portrait-chen-tiejun.svg" alt="陈铁军人物影像待补" width="800" height="1000" />
+              <figcaption><span>NO. 001</span><span>影像待补</span></figcaption>
+            </figure>
+            <figure class="photo-slip photo-slip--b">
+              <img src="assets/img/portrait-zeng-sheng.svg" alt="曾生人物影像待补" width="800" height="1000" />
+              <figcaption><span>NO. 002</span><span>影像待补</span></figcaption>
+            </figure>
+            <figure class="photo-slip photo-slip--c">
+              <img src="assets/img/portrait-lu-xun.svg" alt="鲁迅人物影像待补" width="800" height="1000" />
+              <figcaption><span>NO. 004</span><span>影像待补</span></figcaption>
+            </figure>
+
+            <div class="dossier">
+              <div class="dossier-head">
+                <div class="archive-mark">
+                  <span>国立中山大学</span>
+                  <span>红色人物档案馆</span>
+                  <strong>档号 SYSU-RA-1924</strong>
+                </div>
+                <span class="mono">第壹辑</span>
+              </div>
+              <p class="dossier-title">
+                寻找中大的<br />红色追光者
+                <span>Youth · Choice · Responsibility</span>
+              </p>
+              <div class="dossier-lines" aria-hidden="true">
+                <span></span><span></span><span></span><span></span>
+              </div>
+              <div class="dossier-foot">
+                <p class="index-note">一页纸，一个人。<br />请沿着编号继续往下翻。</p>
+              </div>
+              <div class="seal seal--hero" aria-hidden="true">
+                <span>青</span><span>春</span><span>留</span><span>名</span>
+              </div>
+              <span class="dossier-tear" aria-hidden="true"></span>
+            </div>
+          </div>
+        </div>
+
+        <p class="hero-scroll">向下，进入档案室</p>
+        <p class="hero-corner mono">OPEN FILE / 2026</p>
+      </section>
+
+      <!-- ================= 序 ================= -->
+      <section class="chapter preface" id="preface" aria-labelledby="prefaceTitle">
+        <div class="paper-sheet" aria-hidden="true"></div>
+        <img class="torn-cutout torn-cutout--top" src="assets/img/torn-cutout-c.png" alt="" aria-hidden="true" />
+        <img class="torn-cutout torn-cutout--bottom" src="assets/img/torn-cutout-e.png" alt="" aria-hidden="true" />
+        <div class="paper-takeover" aria-hidden="true"></div>
+        <div class="chapter-inner">
+          <header class="chapter-head">
+            <p class="chapter-kicker"><span class="num">01</span><span>序 / PREFACE</span></p>
+            <h2 class="chapter-title" id="prefaceTitle">
+              历史不是名单，<br />是一个个人的<em>选择</em>。
+            </h2>
+            <div class="chapter-aside">
+              <span class="aside-rule" aria-hidden="true"></span>
+              这份档案从“人”出发：他们与中大的关系、所处的时代、在路口作出的决定。人物文字、照片与出处将在史料核对后替换为最终版本。
+            </div>
+          </header>
+
+          <div class="preface-grid">
+            <div>
+              <p class="preface-lead">
+                当校史被折成一页页档案，<span class="accent">名字</span>就不再只是名字。
+              </p>
+              <div class="preface-body">
+                <p>
+                  1924 年，广东大学在广州创办；1926 年，为纪念孙中山先生，改名国立中山大学。此后二十余年，校园被时代反复推搡：北伐、政变、抗战、西迁、复员。有人离开，有人留下，有人把课堂搬进战场。
+                </p>
+                <p>
+                  我们想做的，不是把历史压缩成一段结论，而是把选择重新展开：一个学生为什么走上街头，一位教师为什么在深夜收拾行李，一群年轻人为什么在明知危险时仍然向前。
+                </p>
+                <p>
+                  请把这张网页当作一间可以走进去的档案室。翻开卡片，读他们的故事；拖动年代尺，看时间如何把人推到路口；最后，留下你自己的那一页。
+                </p>
+              </div>
+            </div>
+
+            <aside class="preface-side" aria-label="阅读提示">
+              <div class="reading-note">
+                <h3>这间档案室怎么读</h3>
+                <ol>
+                  <li><span>在名录里按身份、关键词或年代找一张档案卡。</span></li>
+                  <li><span>点开卡片，照片与姓名会接力到人物正文。</span></li>
+                  <li><span>读到末尾，可以生成一张属于你的档案卡。</span></li>
+                </ol>
+              </div>
+              <blockquote class="margin-quote">
+                “他们也曾和我们一样，在同一个年纪，面对一个不知道答案的时代。”
+                <cite>—— 本页框架样张 · 文案待核</cite>
+              </blockquote>
+            </aside>
+          </div>
+
+          <div class="time-anchor mono" aria-label="时间范围 1924 至 1949">
+            <span>1924</span><span class="anchor-line" aria-hidden="true"></span><span>1949</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 名录 ================= -->
+      <section class="chapter roster" id="roster" aria-labelledby="rosterTitle">
+        <div class="paper-sheet" aria-hidden="true"></div>
+        <img class="torn-cutout torn-cutout--top" src="assets/img/torn-cutout-e.png" alt="" aria-hidden="true" />
+        <img class="torn-cutout torn-cutout--bottom" src="assets/img/torn-cutout-c.png" alt="" aria-hidden="true" />
+        <div class="chapter-inner">
+          <header class="chapter-head">
+            <p class="chapter-kicker"><span class="num">02</span><span>名录 / INDEX</span></p>
+            <h2 class="chapter-title" id="rosterTitle">
+              一叠没有写完的<em>档案</em>
+            </h2>
+            <div class="chapter-aside">
+              <span class="aside-rule" aria-hidden="true"></span>
+              按身份或关键词筛选，也可以拖动年代尺。卡片上的“影像待补”是占位标记，最终照片将连同出处一起替换。
+            </div>
+          </header>
+
+          <div class="filter-bar" aria-label="筛选人物">
+            <div class="filter-row">
+              <span class="filter-label">身份</span>
+              <div class="chip-set" id="roleFilters" role="group" aria-label="按身份筛选">
+                <button class="chip" type="button" data-role="all" aria-pressed="true">全部</button>
+                <button class="chip" type="button" data-role="student" aria-pressed="false">学生</button>
+                <button class="chip" type="button" data-role="teacher" aria-pressed="false">教师</button>
+                <button class="chip" type="button" data-role="alumnus" aria-pressed="false">校友</button>
+              </div>
+              <span class="filter-spacer" aria-hidden="true"></span>
+              <span class="filter-count" id="filterCount" aria-live="polite">06 份档案</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-label">关键词</span>
+              <div class="chip-set" id="keywordFilters" role="group" aria-label="按关键词筛选">
+                <button class="chip" type="button" data-keyword="all" aria-pressed="true">全部</button>
+                <button class="chip" type="button" data-keyword="救亡" aria-pressed="false">救亡</button>
+                <button class="chip" type="button" data-keyword="选择" aria-pressed="false">选择</button>
+                <button class="chip" type="button" data-keyword="求真" aria-pressed="false">求真</button>
+                <button class="chip" type="button" data-keyword="启蒙" aria-pressed="false">启蒙</button>
+                <button class="chip" type="button" data-keyword="担当" aria-pressed="false">担当</button>
+              </div>
+              <span class="filter-spacer" aria-hidden="true"></span>
+              <label class="filter-search">
+                <span class="sr-only">按姓名、年份或身份检索</span>
+                <svg class="icon" viewBox="0 0 20 20" aria-hidden="true">
+                  <circle cx="8.5" cy="8.5" r="4.8" fill="none" stroke="currentColor" stroke-width="1.3" />
+                  <path d="M12 12l4 4" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" />
+                </svg>
+                <input id="rosterSearch" type="search" placeholder="姓名 / 年份 / 身份" autocomplete="off" />
+              </label>
+              <div class="view-switch" role="group" aria-label="浏览方式">
+                <button type="button" data-view="cards" aria-pressed="true">档案卡</button>
+                <button type="button" data-view="years" aria-pressed="false">年代尺</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="index-grid" id="indexGrid">
+            <a
+              class="dossier-card dossier-card--featured"
+              href="people/chen-tiejun.html"
+              data-person="chen-tiejun"
+              data-role="student"
+              data-keywords="青春选择 信仰 牺牲 选择"
+              data-year="1924"
+              data-name="陈铁军"
+            >
+              <span class="card-tape" aria-hidden="true"></span>
+              <div class="card-photo">
+                <img
+                  src="assets/img/portrait-chen-tiejun.svg"
+                  alt="陈铁军人物影像待补"
+                  width="800"
+                  height="1000"
+                  style="view-transition-name: person-chen-tiejun"
+                />
+                <span class="card-no">NO. 001</span>
+                <span class="card-stamp" aria-hidden="true">陈<br />铁<br />军</span>
+              </div>
+              <div class="card-body">
+                <p class="card-life">1904 — 1928 · 广东佛山</p>
+                <h3 class="card-name">陈铁军</h3>
+                <p class="card-role">学生 · 烈士</p>
+                <p class="card-line">她把名字改成“铁军”，也把一生交给了革命。</p>
+                <div class="card-keywords"><span>青春选择</span><span>信仰</span><span>牺牲</span></div>
+              </div>
+            </a>
+
+            <a
+              class="dossier-card"
+              href="people/zeng-sheng.html"
+              data-person="zeng-sheng"
+              data-role="student"
+              data-keywords="救亡 担当"
+              data-year="1933"
+              data-name="曾生"
+            >
+              <span class="card-tape" aria-hidden="true"></span>
+              <div class="card-photo">
+                <img
+                  src="assets/img/portrait-zeng-sheng.svg"
+                  alt="曾生人物影像待补"
+                  width="800"
+                  height="1000"
+                  loading="lazy"
+                  style="view-transition-name: person-zeng-sheng"
+                />
+                <span class="card-no">NO. 002</span>
+                <span class="card-stamp" aria-hidden="true">曾<br />生</span>
+              </div>
+              <div class="card-body">
+                <p class="card-life">1910 — 1995 · 广东惠阳</p>
+                <h3 class="card-name">曾生</h3>
+                <p class="card-role">学生 · 将领</p>
+                <p class="card-line">从校园示威到东江敌后，他把课堂搬进了战场。</p>
+                <div class="card-keywords"><span>救亡</span><span>担当</span></div>
+              </div>
+            </a>
+
+            <a
+              class="dossier-card"
+              href="people/yang-kanghua.html"
+              data-person="yang-kanghua"
+              data-role="alumnus"
+              data-keywords="救亡 组织 担当"
+              data-year="1932"
+              data-name="杨康华"
+            >
+              <div class="card-photo">
+                <img
+                  src="assets/img/portrait-yang-kanghua.svg"
+                  alt="杨康华人物影像待补"
+                  width="800"
+                  height="1000"
+                  loading="lazy"
+                  style="view-transition-name: person-yang-kanghua"
+                />
+                <span class="card-no">NO. 003</span>
+                <span class="card-stamp" aria-hidden="true">杨<br />康<br />华</span>
+              </div>
+              <div class="card-body">
+                <p class="card-life">1915 — 1991 · 广东广州</p>
+                <h3 class="card-name">杨康华</h3>
+                <p class="card-role">校友 · 将领</p>
+                <p class="card-line">他与曾生既是校友，也是东江纵队并肩的搭档。</p>
+                <div class="card-keywords"><span>救亡</span><span>组织</span></div>
+              </div>
+            </a>
+
+            <a
+              class="dossier-card"
+              href="people/lu-xun.html"
+              data-person="lu-xun"
+              data-role="teacher"
+              data-keywords="启蒙 风骨 选择"
+              data-year="1927"
+              data-name="鲁迅"
+            >
+              <div class="card-photo">
+                <img
+                  src="assets/img/portrait-lu-xun.svg"
+                  alt="鲁迅人物影像待补"
+                  width="800"
+                  height="1000"
+                  loading="lazy"
+                  style="view-transition-name: person-lu-xun"
+                />
+                <span class="card-no">NO. 004</span>
+                <span class="card-stamp" aria-hidden="true">鲁<br />迅</span>
+              </div>
+              <div class="card-body">
+                <p class="card-life">1881 — 1936 · 浙江绍兴</p>
+                <h3 class="card-name">鲁迅</h3>
+                <p class="card-role">教师 · 作家</p>
+                <p class="card-line">他在中大只待了几个月，却留下了知识分子风骨的注脚。</p>
+                <div class="card-keywords"><span>启蒙</span><span>风骨</span></div>
+              </div>
+            </a>
+
+            <a
+              class="dossier-card"
+              href="people/guo-moruo.html"
+              data-person="guo-moruo"
+              data-role="teacher"
+              data-keywords="转向 实践 选择"
+              data-year="1926"
+              data-name="郭沫若"
+            >
+              <div class="card-photo">
+                <img
+                  src="assets/img/portrait-guo-moruo.svg"
+                  alt="郭沫若人物影像待补"
+                  width="800"
+                  height="1000"
+                  loading="lazy"
+                  style="view-transition-name: person-guo-moruo"
+                />
+                <span class="card-no">NO. 005</span>
+                <span class="card-stamp" aria-hidden="true">郭<br />沫<br />若</span>
+              </div>
+              <div class="card-body">
+                <p class="card-life">1892 — 1978 · 四川乐山</p>
+                <h3 class="card-name">郭沫若</h3>
+                <p class="card-role">教师 · 学者</p>
+                <p class="card-line">他把“创造社”式的锋芒带进课堂，也在这里递交了入党申请。</p>
+                <div class="card-keywords"><span>转向</span><span>实践</span></div>
+              </div>
+            </a>
+
+            <a
+              class="dossier-card dossier-card--wide"
+              href="people/wang-yanan.html"
+              data-person="wang-yanan"
+              data-role="teacher"
+              data-keywords="求真 坚守"
+              data-year="1940"
+              data-name="王亚南"
+            >
+              <div class="card-photo">
+                <img
+                  src="assets/img/portrait-wang-yanan.svg"
+                  alt="王亚南人物影像待补"
+                  width="800"
+                  height="1000"
+                  loading="lazy"
+                  style="view-transition-name: person-wang-yanan"
+                />
+                <span class="card-no">NO. 006</span>
+                <span class="card-stamp" aria-hidden="true">王<br />亚<br />南</span>
+              </div>
+              <div class="card-body">
+                <p class="card-life">1901 — 1969 · 湖北黄冈</p>
+                <h3 class="card-name">王亚南</h3>
+                <p class="card-role">教师 · 经济学家</p>
+                <p class="card-line">在坪石的竹棚教室里，他讲《资本论》。</p>
+                <div class="card-keywords"><span>求真</span><span>坚守</span></div>
+              </div>
+            </a>
+
+            <a class="archive-gap" href="#coda">
+              <div>
+                <p class="mono">NO. 007 / PENDING</p>
+                <h3>下一份档案，<br />等你补上。</h3>
+              </div>
+              <span class="gap-arrow" aria-hidden="true">↘</span>
+            </a>
+          </div>
+
+          <div class="empty-state" id="emptyState" hidden>
+            <div>
+              <h3>这一格还没有档案</h3>
+              <p>换一个关键词，或把筛选恢复为“全部”。也可以到尾声，留下你自己的那一页。</p>
+              <button type="button" id="resetFilters">恢复全部档案</button>
+            </div>
+          </div>
+
+          <section class="chronology" id="chronology" aria-labelledby="chronologyTitle" hidden>
+            <div class="chronology-head">
+              <h3 id="chronologyTitle">拖动年代尺，找一个路口</h3>
+              <p>经过的年份会依次点亮。停在某一年，看看这一年有谁进入档案。</p>
+            </div>
+            <div class="chronology-main">
+              <div>
+                <div class="year-readout">
+                  <strong id="yearReadout">1924</strong>
+                  <span>YEAR / 年份</span>
+                </div>
+                <div class="year-track">
+                  <input
+                    id="yearScrubber"
+                    type="range"
+                    min="1924"
+                    max="1949"
+                    step="1"
+                    value="1924"
+                    aria-label="拖动选择年份"
+                    aria-valuetext="1924 年"
+                  />
+                  <div class="year-ticks" aria-hidden="true">
+                    <span class="year-tick" data-year="1924" style="left: 0%">1924</span>
+                    <span class="year-tick" data-year="1926" style="left: 8%">1926</span>
+                    <span class="year-tick" data-year="1927" style="left: 12%">1927</span>
+                    <span class="year-tick" data-year="1932" style="left: 32%">1932</span>
+                    <span class="year-tick" data-year="1933" style="left: 36%">1933</span>
+                    <span class="year-tick" data-year="1940" style="left: 64%">1940</span>
+                    <span class="year-tick" data-year="1949" style="left: 100%">1949</span>
+                  </div>
+                </div>
+              </div>
+              <div class="year-people" id="yearPeople" aria-live="polite"></div>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <!-- ================= 时代场景 ================= -->
+      <section class="chapter era" id="era" aria-labelledby="eraTitle">
+        <div class="paper-takeover" aria-hidden="true"></div>
+        <div class="chapter-inner">
+          <header class="chapter-head">
+            <p class="chapter-kicker"><span class="num">03</span><span>时代 / SCENES</span></p>
+            <h2 class="chapter-title" id="eraTitle">
+              时代把人推到路口，<br />人把<em>选择</em>写进时代。
+            </h2>
+            <div class="chapter-aside">
+              <span class="aside-rule" aria-hidden="true"></span>
+              四段横向长卷，是四个不同的校园处境。用下方箭头、进度点或键盘左右键翻阅；触屏可直接拖动。
+            </div>
+          </header>
+
+          <div class="era-track" id="eraTrack" tabindex="0" aria-label="时代场景，可横向滚动">
+            <article class="era-panel" data-era="0" aria-labelledby="eraPanel1">
+              <div class="era-visual">
+                <img src="assets/img/portrait-chen-tiejun.svg" alt="场景示意：建校与觉醒时期的人物影像待补" width="800" height="1000" loading="lazy" />
+                <span class="era-year" aria-hidden="true">1924</span>
+              </div>
+              <div class="era-body">
+                <p class="era-index">SCENE 01 / 1924 — 1927</p>
+                <h3 id="eraPanel1">建校与觉醒</h3>
+                <p class="era-context">
+                  广东大学创办，1926 年改名国立中山大学。新学生社、妇女解放协会等团体在校园里生长，青年把“读书”与“救国”放在同一张课表上。
+                </p>
+                <div class="era-people">
+                  <a class="era-person" href="people/chen-tiejun.html">
+                    <img src="assets/img/portrait-chen-tiejun.svg" alt="" width="800" height="1000" loading="lazy" />
+                    陈铁军 · 1924 入学
+                  </a>
+                  <a class="era-person" href="people/guo-moruo.html">
+                    <img src="assets/img/portrait-guo-moruo.svg" alt="" width="800" height="1000" loading="lazy" />
+                    郭沫若 · 1926 任教
+                  </a>
+                </div>
+                <p class="era-footnote">场景文案为框架样张，史实与引文待最终核对。</p>
+              </div>
+            </article>
+
+            <article class="era-panel" data-era="1" aria-labelledby="eraPanel2">
+              <div class="era-visual">
+                <img src="assets/img/portrait-lu-xun.svg" alt="场景示意：暗夜与坚持时期的人物影像待补" width="800" height="1000" loading="lazy" />
+                <span class="era-year" aria-hidden="true">1927</span>
+              </div>
+              <div class="era-body">
+                <p class="era-index">SCENE 02 / 1927 — 1937</p>
+                <h3 id="eraPanel2">暗夜与坚持</h3>
+                <p class="era-context">
+                  “四一五”之后，校园里的公开集会转入地下。鲁迅辞职离开，仍有学生把传单藏进书页；1935 年“一二·九”运动爆发，广州学生再次走上街头。
+                </p>
+                <div class="era-people">
+                  <a class="era-person" href="people/lu-xun.html">
+                    <img src="assets/img/portrait-lu-xun.svg" alt="" width="800" height="1000" loading="lazy" />
+                    鲁迅 · 1927 任教
+                  </a>
+                  <a class="era-person" href="people/zeng-sheng.html">
+                    <img src="assets/img/portrait-zeng-sheng.svg" alt="" width="800" height="1000" loading="lazy" />
+                    曾生 · 1933 入学
+                  </a>
+                </div>
+                <p class="era-footnote">场景文案为框架样张，史实与引文待最终核对。</p>
+              </div>
+            </article>
+
+            <article class="era-panel" data-era="2" aria-labelledby="eraPanel3">
+              <div class="era-visual">
+                <img src="assets/img/portrait-wang-yanan.svg" alt="场景示意：烽火与西迁时期的人物影像待补" width="800" height="1000" loading="lazy" />
+                <span class="era-year" aria-hidden="true">1938</span>
+              </div>
+              <div class="era-body">
+                <p class="era-index">SCENE 03 / 1937 — 1945</p>
+                <h3 id="eraPanel3">烽火与西迁</h3>
+                <p class="era-context">
+                  广州沦陷后，中大西迁云南澄江，后又迁往粤北坪石。竹棚作教室，油灯下备课；王亚南在简陋校舍里系统讲授《资本论》。
+                </p>
+                <div class="era-people">
+                  <a class="era-person" href="people/wang-yanan.html">
+                    <img src="assets/img/portrait-wang-yanan.svg" alt="" width="800" height="1000" loading="lazy" />
+                    王亚南 · 1940 任教
+                  </a>
+                  <a class="era-person" href="people/yang-kanghua.html">
+                    <img src="assets/img/portrait-yang-kanghua.svg" alt="" width="800" height="1000" loading="lazy" />
+                    杨康华 · 1932 入学
+                  </a>
+                </div>
+                <p class="era-footnote">场景文案为框架样张，史实与引文待最终核对。</p>
+              </div>
+            </article>
+
+            <article class="era-panel" data-era="3" aria-labelledby="eraPanel4">
+              <div class="era-visual">
+                <img src="assets/img/portrait-yang-kanghua.svg" alt="场景示意：黎明与抉择时期的人物影像待补" width="800" height="1000" loading="lazy" />
+                <span class="era-year" aria-hidden="true">1949</span>
+              </div>
+              <div class="era-body">
+                <p class="era-index">SCENE 04 / 1945 — 1949</p>
+                <h3 id="eraPanel4">黎明与抉择</h3>
+                <p class="era-context">
+                  抗战胜利后，中大复员广州。有人回到书桌，有人继续奔走。1949 年广州解放，档案没有结束，只是翻到了新的一页。
+                </p>
+                <div class="era-people">
+                  <a class="era-person" href="people/zeng-sheng.html">
+                    <img src="assets/img/portrait-zeng-sheng.svg" alt="" width="800" height="1000" loading="lazy" />
+                    曾生 · 东江纵队
+                  </a>
+                  <a class="era-person" href="people/chen-tiejun.html">
+                    <img src="assets/img/portrait-chen-tiejun.svg" alt="" width="800" height="1000" loading="lazy" />
+                    陈铁军 · 1928 就义
+                  </a>
+                </div>
+                <p class="era-footnote">场景文案为框架样张，史实与引文待最终核对。</p>
+              </div>
+            </article>
+          </div>
+
+          <div class="era-controls">
+            <div class="era-arrows">
+              <button class="era-arrow" type="button" id="eraPrev" aria-label="上一个时代场景">←</button>
+              <button class="era-arrow" type="button" id="eraNext" aria-label="下一个时代场景">→</button>
+            </div>
+            <div class="era-dots" id="eraDots" role="group" aria-label="时代场景进度">
+              <button class="era-dot" type="button" data-slide="0" aria-current="true">01</button>
+              <button class="era-dot" type="button" data-slide="1" aria-current="false">02</button>
+              <button class="era-dot" type="button" data-slide="2" aria-current="false">03</button>
+              <button class="era-dot" type="button" data-slide="3" aria-current="false">04</button>
+            </div>
+            <span class="era-hint">拖动 / ← →</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 精神图谱 ================= -->
+      <section class="chapter spirit" id="spirit" aria-labelledby="spiritTitle">
+        <div class="paper-sheet" aria-hidden="true"></div>
+        <img class="torn-cutout torn-cutout--top" src="assets/img/torn-cutout-c.png" alt="" aria-hidden="true" />
+        <img class="torn-cutout torn-cutout--bottom" src="assets/img/torn-cutout-e.png" alt="" aria-hidden="true" />
+        <div class="paper-takeover" aria-hidden="true"></div>
+        <div class="chapter-inner">
+          <header class="chapter-head">
+            <p class="chapter-kicker"><span class="num">04</span><span>图谱 / SPIRIT</span></p>
+            <h2 class="chapter-title" id="spiritTitle">
+              他们不是同一种人，<br />却在同一条路上<em>相遇</em>。
+            </h2>
+            <div class="chapter-aside">
+              <span class="aside-rule" aria-hidden="true"></span>
+              点一个词，看看它与哪些人相连。线索出现时，其他人会退到背景里；再点一次即可取消。
+            </div>
+          </header>
+
+          <div class="spirit-grid">
+            <div class="keyword-list" id="keywordList" role="group" aria-label="精神关键词">
+              <button class="keyword-btn" type="button" data-spirit="理想" aria-pressed="false">
+                <span class="kw-cn">理想</span><span class="kw-en">Ideal</span>
+              </button>
+              <button class="keyword-btn" type="button" data-spirit="选择" aria-pressed="false">
+                <span class="kw-cn">选择</span><span class="kw-en">Choice</span>
+              </button>
+              <button class="keyword-btn" type="button" data-spirit="救亡" aria-pressed="false">
+                <span class="kw-cn">救亡</span><span class="kw-en">Rescue</span>
+              </button>
+              <button class="keyword-btn" type="button" data-spirit="求真" aria-pressed="false">
+                <span class="kw-cn">求真</span><span class="kw-en">Truth</span>
+              </button>
+              <button class="keyword-btn" type="button" data-spirit="启蒙" aria-pressed="false">
+                <span class="kw-cn">启蒙</span><span class="kw-en">Awakening</span>
+              </button>
+              <button class="keyword-btn" type="button" data-spirit="担当" aria-pressed="false">
+                <span class="kw-cn">担当</span><span class="kw-en">Duty</span>
+              </button>
+            </div>
+
+            <div>
+              <div class="spirit-map" id="spiritMap">
+                <svg class="spirit-lines" id="spiritLines" aria-hidden="true"></svg>
+                <a class="spirit-node spirit-node--chen" href="people/chen-tiejun.html" data-spirit-person="陈铁军" data-keywords="理想 选择 担当">
+                  <span class="node-photo"><img src="assets/img/portrait-chen-tiejun.svg" alt="" width="800" height="1000" loading="lazy" /></span>
+                  <span class="node-name">陈铁军</span>
+                  <span class="node-role">学生 · 烈士</span>
+                </a>
+                <a class="spirit-node spirit-node--zeng" href="people/zeng-sheng.html" data-spirit-person="曾生" data-keywords="救亡 担当">
+                  <span class="node-photo"><img src="assets/img/portrait-zeng-sheng.svg" alt="" width="800" height="1000" loading="lazy" /></span>
+                  <span class="node-name">曾生</span>
+                  <span class="node-role">学生 · 将领</span>
+                </a>
+                <a class="spirit-node spirit-node--yang" href="people/yang-kanghua.html" data-spirit-person="杨康华" data-keywords="救亡 担当">
+                  <span class="node-photo"><img src="assets/img/portrait-yang-kanghua.svg" alt="" width="800" height="1000" loading="lazy" /></span>
+                  <span class="node-name">杨康华</span>
+                  <span class="node-role">校友 · 将领</span>
+                </a>
+                <a class="spirit-node spirit-node--lu" href="people/lu-xun.html" data-spirit-person="鲁迅" data-keywords="启蒙 选择">
+                  <span class="node-photo"><img src="assets/img/portrait-lu-xun.svg" alt="" width="800" height="1000" loading="lazy" /></span>
+                  <span class="node-name">鲁迅</span>
+                  <span class="node-role">教师 · 作家</span>
+                </a>
+                <a class="spirit-node spirit-node--guo" href="people/guo-moruo.html" data-spirit-person="郭沫若" data-keywords="理想 选择">
+                  <span class="node-photo"><img src="assets/img/portrait-guo-moruo.svg" alt="" width="800" height="1000" loading="lazy" /></span>
+                  <span class="node-name">郭沫若</span>
+                  <span class="node-role">教师 · 学者</span>
+                </a>
+                <a class="spirit-node spirit-node--wang" href="people/wang-yanan.html" data-spirit-person="王亚南" data-keywords="求真">
+                  <span class="node-photo"><img src="assets/img/portrait-wang-yanan.svg" alt="" width="800" height="1000" loading="lazy" /></span>
+                  <span class="node-name">王亚南</span>
+                  <span class="node-role">教师 · 经济学家</span>
+                </a>
+                <p class="spirit-center-note"><strong>精神不是标签</strong>是当时的一次次选择</p>
+              </div>
+
+              <div class="spirit-result">
+                <p id="spiritResultText">点左侧任意一个词，查看相连的人物。</p>
+                <a href="#roster" id="spiritReset">回到全部档案</a>
+              </div>
+
+              <div class="spirit-mobile-list" id="spiritMobileList" aria-label="人物列表">
+                <a href="people/chen-tiejun.html"><img src="assets/img/portrait-chen-tiejun.svg" alt="" width="800" height="1000" /><span><span class="ml-name">陈铁军</span><span class="ml-role">学生 · 烈士</span></span></a>
+                <a href="people/zeng-sheng.html"><img src="assets/img/portrait-zeng-sheng.svg" alt="" width="800" height="1000" /><span><span class="ml-name">曾生</span><span class="ml-role">学生 · 将领</span></span></a>
+                <a href="people/yang-kanghua.html"><img src="assets/img/portrait-yang-kanghua.svg" alt="" width="800" height="1000" /><span><span class="ml-name">杨康华</span><span class="ml-role">校友 · 将领</span></span></a>
+                <a href="people/lu-xun.html"><img src="assets/img/portrait-lu-xun.svg" alt="" width="800" height="1000" /><span><span class="ml-name">鲁迅</span><span class="ml-role">教师 · 作家</span></span></a>
+                <a href="people/guo-moruo.html"><img src="assets/img/portrait-guo-moruo.svg" alt="" width="800" height="1000" /><span><span class="ml-name">郭沫若</span><span class="ml-role">教师 · 学者</span></span></a>
+                <a href="people/wang-yanan.html"><img src="assets/img/portrait-wang-yanan.svg" alt="" width="800" height="1000" /><span><span class="ml-name">王亚南</span><span class="ml-role">教师 · 经济学家</span></span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 尾声 ================= -->
+      <section class="chapter coda" id="coda" aria-labelledby="codaTitle">
+        <div class="chapter-inner">
+          <header class="chapter-head">
+            <p class="chapter-kicker"><span class="num">05</span><span>留名 / YOUR PAGE</span></p>
+            <h2 class="chapter-title" id="codaTitle">
+              如果档案翻到你这一页，<br />你会写下<em>什么</em>？
+            </h2>
+            <div class="chapter-aside">
+              <span class="aside-rule" aria-hidden="true"></span>
+              写下名字、选择与一句话，盖上印章。档案卡只保存在你的浏览器里，不会上传。
+            </div>
+          </header>
+
+          <div class="coda-grid">
+            <div class="coda-copy">
+              <h3>青春不是一段年龄，<span>是一次站到光里的选择。</span></h3>
+              <p>
+                他们留下了名字，也留下了没有写完的问题。现在，这张空白的档案卡交给你。你可以认真写，也可以只看看它长什么样。
+              </p>
+              <p class="coda-note">生成后可保存为 PNG；下次回到本页，浏览器会记得你写下的内容。</p>
+            </div>
+
+            <div class="coda-card">
+              <form class="coda-form" id="cardForm">
+                <div class="field-row">
+                  <div class="field">
+                    <label for="cardName">姓名</label>
+                    <input id="cardName" name="name" type="text" maxlength="12" placeholder="写下你的名字" autocomplete="name" />
+                  </div>
+                  <div class="field">
+                    <label for="cardRole">我愿成为</label>
+                    <select id="cardRole" name="role">
+                      <option value="求真者">求真者</option>
+                      <option value="担当者">担当者</option>
+                      <option value="点灯人">点灯人</option>
+                      <option value="记录者">记录者</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="cardLine">一句话</label>
+                  <textarea id="cardLine" name="line" maxlength="42" rows="2" placeholder="把青春写进更大的事情里。"></textarea>
+                  <span class="field-hint">不超过 42 个字。留空也可以，我们会替你留一行空白。</span>
+                </div>
+                <button class="card-generate" type="submit">盖章生成我的档案卡</button>
+              </form>
+              <noscript>
+                <p class="card-status">生成图片需要开启 JavaScript；人物名录与人物正文仍可完整阅读。</p>
+              </noscript>
+
+              <div class="card-preview" id="cardPreview">
+                <img id="cardPreviewImage" alt="生成的个人档案卡预览" />
+                <div class="card-actions">
+                  <a id="cardDownload" href="#" download="青春留名-我的档案卡.png">保存 PNG</a>
+                  <button id="cardRedo" type="button">重做一张</button>
+                </div>
+              </div>
+              <p class="card-status" id="cardStatus" aria-live="polite"></p>
+
+              <div class="card-dom-fallback" id="cardFallback">
+                <p class="mono">MY ARCHIVE CARD</p>
+                <h3 id="fallbackName">无名追光者</h3>
+                <p id="fallbackRole">求真者</p>
+                <p id="fallbackLine">把青春写进更大的事情里。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <button class="skip-intro" id="skipIntro" type="button">跳过开场</button>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a class="brand" href="#opening">
+            <span class="brand-mark" aria-hidden="true">青</span>
+            <span class="brand-copy"><span class="brand-title">青春留名</span></span>
+          </a>
+          <p>寻找中大的红色追光者。以人物档案为入口，把历史还原为一个个具体的人、具体的选择。</p>
+        </div>
+        <div class="footer-col">
+          <h3>档案目录</h3>
+          <ul>
+            <li><a href="#preface">序 · 为什么从人开始</a></li>
+            <li><a href="#roster">名录 · 一叠档案</a></li>
+            <li><a href="#era">时代 · 四段场景</a></li>
+            <li><a href="#spirit">图谱 · 精神线索</a></li>
+            <li><a href="#coda">尾声 · 我的档案卡</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>资料与说明</h3>
+          <ul>
+            <li><span>当前为网页框架样张，人物文字、照片与出处待最终核对后替换。</span></li>
+            <li><span>装饰性裁切图均标注“示意”或“影像待补”。</span></li>
+            <li><button type="button" id="replayIntro">重看盖章开场</button></li>
+            <li><a href="DESIGN.md">查看设计说明</a></li>
+            <li><a href="README.md">查看内容替换说明</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>青春留名 · 寻找中大的红色追光者 · 网页框架 v0.1</span>
+        <span><a href="#opening">回到封面</a> · <a href="#roster">回到名录</a></span>
+      </div>
+    </footer>
+
+    <noscript>
+      <style>
+        .skip-intro { display: none; }
+        .filter-bar { position: relative; }
+        .filter-bar .chip,
+        .view-switch,
+        #chronology { display: none; }
+      </style>
+    </noscript>
+
+    <script src="assets/js/data.js?v=20261019g"></script>
+    <script src="assets/js/app.js?v=20261019g" defer></script>
+    <script src="assets/js/card.js?v=20261019g" defer></script>
+  </body>
+</html>
