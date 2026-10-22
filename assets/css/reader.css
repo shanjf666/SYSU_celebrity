@@ -186,6 +186,11 @@
   height: auto;
   aspect-ratio: 4 / 5;
   object-fit: cover;
+  object-position: center 18%;
+}
+
+.portrait-plate img[src*="portrait-yao-yandan"] {
+  object-position: center 42%;
   filter: grayscale(1) contrast(0.92);
   cursor: zoom-in;
 }
@@ -901,4 +906,11 @@
   .article-prose {
     max-width: none;
   }
+}
+
+.aside-person img[src*="portrait-lin-haoran"],
+.aside-person img[src*="portrait-chen-xiaoming"],
+.portrait-plate img[src*="portrait-lin-haoran"],
+.portrait-plate img[src*="portrait-chen-xiaoming"] {
+  filter: none;
 }
