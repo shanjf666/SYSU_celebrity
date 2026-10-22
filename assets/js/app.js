@@ -374,9 +374,50 @@
   const chronology = $("#chronology");
   const filterState = { role: "all", keyword: "all", query: "", view: "cards" };
   let filterTimer = 0;
+  const dossierText = new Map(
+    (Array.isArray(window.ARCHIVE_PEOPLE) ? window.ARCHIVE_PEOPLE : []).map((person) => {
+      const bits = [
+        person.name,
+        person.dates,
+        person.place,
+        person.stageLabel,
+        person.roleLabel,
+        person.dept,
+        person.years,
+        person.anchorLabel,
+        person.line,
+        person.lede,
+        person.quote && person.quote.text,
+        ...(person.keywords || []),
+        ...(person.sections || []).flatMap((section) => [section.title, ...(section.paras || [])]),
+        ...(person.timeline || []).flatMap((item) => [item.year, item.text])
+      ];
+      return [person.id, bits.filter(Boolean).join(" ")];
+    })
+  );
 
   function normalized(text) {
     return (text || "").replace(/\s+/g, " ").trim().toLowerCase();
+  }
+
+  function alignSearchResults() {
+    const filterBar = document.querySelector(".filter-bar");
+    if (!filterBar) return;
+    const header = document.querySelector(".site-header");
+    const headerH = header ? header.getBoundingClientRect().height : 0;
+    const anchor = filterBar.previousElementSibling;
+    let staticTop = filterBar.getBoundingClientRect().top + window.scrollY;
+    if (anchor) {
+      const margin = parseFloat(getComputedStyle(anchor).marginBottom) || 0;
+      staticTop = anchor.getBoundingClientRect().bottom + margin + window.scrollY;
+    }
+    const desired = Math.max(0, staticTop - headerH);
+    if (Math.abs(desired - window.scrollY) < 8) return;
+    const root = document.documentElement;
+    const previous = root.style.scrollBehavior;
+    root.style.scrollBehavior = "auto";
+    window.scrollTo(0, desired);
+    root.style.scrollBehavior = previous;
   }
 
   function cardMatches(card) {
@@ -390,7 +431,8 @@
         card.dataset.year,
         card.dataset.keywords,
         card.dataset.role,
-        card.textContent
+        card.textContent,
+        dossierText.get(card.dataset.person)
       ].join(" ")
     );
     const queryMatch = !filterState.query || haystack.includes(normalized(filterState.query));
@@ -413,6 +455,11 @@
       if (emptyState) emptyState.hidden = matches.length !== 0 || !anyFilter;
       if (filterCount) {
         filterCount.textContent = `${String(matches.length).padStart(2, "0")} 份档案`;
+      }
+      if (filterState.query && filterState.view !== "years") {
+        void grid.offsetHeight;
+        alignSearchResults();
+        requestAnimationFrame(() => alignSearchResults());
       }
       if (animate && !reducedMotion) {
         matches.forEach((card, index) => {
@@ -534,7 +581,7 @@
     if (!matches.length) {
       const empty = document.createElement("p");
       empty.className = "year-empty";
-      empty.textContent = "这一年暂未收录人物。可以试试 1924、1926、1927、1932、1933、1940。";
+      empty.textContent = "这一年暂未收录人物。可以试试 1924、1927、1940、1953、1958、1978、1981、2017、2020。";
       yearPeople.append(empty);
       return;
     }

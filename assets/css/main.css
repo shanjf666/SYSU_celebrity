@@ -500,6 +500,7 @@
   height: auto;
   aspect-ratio: 4 / 5;
   object-fit: cover;
+  object-position: center 18%;
   filter: grayscale(1) contrast(0.92) sepia(0.08);
 }
 
@@ -1392,6 +1393,7 @@ html.js .intro-veil.is-visible {
    ============================================================ */
 
 .roster {
+  overflow-anchor: none;
   background: var(--paper-shade);
 }
 
@@ -1524,6 +1526,7 @@ html.js .intro-veil.is-visible {
 }
 
 .index-grid {
+  overflow-anchor: none;
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: clamp(0.9rem, 1.6vw, 1.4rem);
@@ -1659,6 +1662,7 @@ html.js .intro-veil.is-visible {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 18%;
   filter: grayscale(1) contrast(0.92) brightness(1.04);
   transform: scale(1.002);
   transition:
@@ -1750,6 +1754,14 @@ html.js .intro-veil.is-visible {
   font-family: var(--font-mono);
   font-size: 0.58rem;
   letter-spacing: 0.05em;
+}
+
+.card-stage {
+  margin: 0;
+  color: var(--cinnabar);
+  font-family: var(--font-ui);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
 }
 
 .card-role {
@@ -1844,6 +1856,10 @@ html.js .intro-veil.is-visible {
   padding: 3rem 1rem;
   border: 1px dashed var(--line-strong);
   text-align: center;
+}
+
+.empty-state[hidden] {
+  display: none;
 }
 
 .empty-state h3 {
@@ -2029,6 +2045,10 @@ html.js .intro-veil.is-visible {
   inset-block-end: 0;
   height: 1.5rem;
   pointer-events: none;
+}
+
+.year-tick.is-raised {
+  transform: translate(-50%, -0.9rem);
 }
 
 .year-tick {
@@ -2219,6 +2239,7 @@ html.js .intro-veil.is-visible {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 18%;
   filter: grayscale(1) contrast(0.88) sepia(0.08);
 }
 
@@ -2561,7 +2582,7 @@ html.js .intro-veil.is-visible {
   inset-inline-start: var(--x);
   inset-block-start: var(--y);
   display: flex;
-  width: 7.2rem;
+  width: 6.4rem;
   flex-direction: column;
   align-items: center;
   gap: 0.42rem;
@@ -2626,34 +2647,54 @@ html.js .intro-veil.is-visible {
   opacity: 0.22;
 }
 
-.spirit-node--chen {
-  --x: 22%;
-  --y: 24%;
-}
-
-.spirit-node--zeng {
-  --x: 77%;
-  --y: 19%;
-}
-
-.spirit-node--yang {
-  --x: 84%;
-  --y: 61%;
-}
-
-.spirit-node--lu {
-  --x: 56%;
-  --y: 47%;
-}
-
-.spirit-node--guo {
+.spirit-node--xun {
   --x: 18%;
-  --y: 69%;
+  --y: 16%;
 }
 
-.spirit-node--wang {
-  --x: 49%;
-  --y: 82%;
+.spirit-node--tiejun {
+  --x: 48%;
+  --y: 12%;
+}
+
+.spirit-node--chongqing {
+  --x: 78%;
+  --y: 16%;
+}
+
+.spirit-node--zhelong {
+  --x: 14%;
+  --y: 46%;
+}
+
+.spirit-node--lin {
+  --x: 84%;
+  --y: 46%;
+}
+
+.spirit-node--zhaotao {
+  --x: 20%;
+  --y: 78%;
+}
+
+.spirit-node--haoran {
+  --x: 40%;
+  --y: 84%;
+}
+
+.spirit-node--shangan {
+  --x: 62%;
+  --y: 84%;
+}
+
+.spirit-node--xiaoming {
+  --x: 80%;
+  --y: 70%;
+}
+
+.spirit-node--yandan {
+  --x: 66%;
+  --y: 28%;
 }
 
 .spirit-center-note {
@@ -3585,4 +3626,36 @@ html.js .intro-veil.is-visible {
   .footer-bottom {
     display: grid;
   }
+}
+
+.card-photo img[src*="portrait-yao-yandan"],
+.photo-slip img[src*="portrait-yao-yandan"],
+.era-visual img[src*="portrait-yao-yandan"],
+.era-person img[src*="portrait-yao-yandan"],
+.spirit-node img[src*="portrait-yao-yandan"] {
+  object-position: center 42%;
+}
+
+/* 在世人物始终彩色；黑白与悬停上色只用于已故人物。 */
+.photo-slip img[src*="portrait-lin-haoran"],
+.photo-slip img[src*="portrait-chen-xiaoming"],
+.card-photo img[src*="portrait-lin-haoran"],
+.card-photo img[src*="portrait-chen-xiaoming"],
+.dossier-card:hover .card-photo img[src*="portrait-lin-haoran"],
+.dossier-card:hover .card-photo img[src*="portrait-chen-xiaoming"],
+.era-visual img[src*="portrait-lin-haoran"],
+.era-visual img[src*="portrait-chen-xiaoming"],
+.era-person img[src*="portrait-lin-haoran"],
+.era-person img[src*="portrait-chen-xiaoming"],
+.spirit-node .node-photo img[src*="portrait-lin-haoran"],
+.spirit-node .node-photo img[src*="portrait-chen-xiaoming"],
+.spirit-mobile-list img[src*="portrait-lin-haoran"],
+.spirit-mobile-list img[src*="portrait-chen-xiaoming"] {
+  filter: none;
+}
+
+.dossier-card[hidden],
+.archive-gap[hidden],
+.index-grid[hidden] {
+  display: none !important;
 }

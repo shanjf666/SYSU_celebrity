@@ -153,7 +153,7 @@
       lightboxCaption.textContent = image.dataset.caption || image.alt || "人物影像";
     }
     if (lightboxMeta) {
-      lightboxMeta.textContent = image.dataset.meta || "影像待补 · 示意";
+      lightboxMeta.textContent = image.dataset.meta || "";
     }
     lightbox.hidden = false;
     document.body.classList.add("is-locked");
