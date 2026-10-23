@@ -105,7 +105,7 @@ ol {
   background: var(--ink);
   color: var(--paper-raised);
   font-family: var(--font-ui);
-  font-size: 0.8125rem;
+  font-size: var(--text-control);
   text-decoration: none;
   transform: translateY(-180%);
   transition: transform var(--dur-ui) var(--ease-out);
@@ -129,7 +129,7 @@ ol {
 
 .mono {
   font-family: var(--font-mono);
-  font-size: 0.6875rem;
+  font-size: var(--text-micro);
   font-weight: 500;
   letter-spacing: 0.11em;
   line-height: 1.5;
@@ -138,7 +138,7 @@ ol {
 
 .ui-label {
   font-family: var(--font-ui);
-  font-size: 0.75rem;
+  font-size: var(--text-support);
   font-weight: 500;
   line-height: 1.5;
 }
@@ -188,7 +188,7 @@ ol {
   align-items: center;
   gap: 0.7rem;
   font-family: var(--font-mono);
-  font-size: 0.6875rem;
+  font-size: var(--text-micro);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--ink-3);

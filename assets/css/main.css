@@ -1,5 +1,5 @@
-@import url("tokens.css?v=20261019g");
-@import url("base.css?v=20261019g");
+@import url("tokens.css?v=20261023c");
+@import url("base.css?v=20261023c");
 @import url("motion.css?v=20261019g");
 
 /* ============================================================
@@ -89,9 +89,9 @@
 
 .brand-sub {
   font-family: var(--font-mono);
-  font-size: 0.6rem;
+  font-size: var(--text-support);
   letter-spacing: 0.14em;
-  color: var(--ink-3);
+  color: var(--ink-2);
   text-transform: uppercase;
 }
 
@@ -113,7 +113,7 @@
   border-radius: var(--radius);
   color: var(--ink-2);
   font-family: var(--font-ui);
-  font-size: 0.72rem;
+  font-size: var(--text-control);
   line-height: 1;
   transition:
     color var(--dur-tap) var(--ease-out),
@@ -168,9 +168,9 @@
   gap: 0.7rem;
   min-height: 2.6rem;
   padding-inline-end: 1.15rem;
-  color: var(--ink-3);
+  color: var(--ink-2);
   font-family: var(--font-ui);
-  font-size: 0.68rem;
+  font-size: var(--text-control);
   text-decoration: none;
   transition: color var(--dur-ui) var(--ease-out);
 }
@@ -192,7 +192,7 @@
 
 .rail-item .rail-no {
   font-family: var(--font-mono);
-  font-size: 0.56rem;
+  font-size: var(--text-micro);
   letter-spacing: 0.08em;
   opacity: 0;
   transform: translateX(0.35rem);
@@ -342,7 +342,7 @@
   background: var(--ink);
   color: var(--paper-raised);
   font-family: var(--font-ui);
-  font-size: 0.8rem;
+  font-size: var(--text-control);
   text-decoration: none;
   transition:
     background-color var(--dur-tap) var(--ease-out),
@@ -362,7 +362,7 @@
   border-bottom: 1px solid var(--line-strong);
   color: var(--ink-2);
   font-family: var(--font-ui);
-  font-size: 0.75rem;
+  font-size: var(--text-control);
   text-decoration: none;
   transition:
     color var(--dur-tap) var(--ease-out),
@@ -393,7 +393,7 @@
 .hero-meta strong {
   color: var(--ink);
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: var(--text-support);
   font-weight: 500;
   letter-spacing: 0.04em;
 }
@@ -513,7 +513,7 @@
   gap: 0.4rem;
   color: var(--ink-3);
   font-family: var(--font-mono);
-  font-size: 0.5rem;
+  font-size: var(--text-micro);
   letter-spacing: 0.04em;
 }
 
@@ -583,7 +583,7 @@
   border-bottom: 0;
   color: var(--ink-2);
   font-family: var(--font-display);
-  font-size: 0.85rem;
+  font-size: var(--text-support);
   letter-spacing: 0.08em;
 }
 
@@ -616,7 +616,7 @@
   gap: 0.25rem;
   color: var(--ink-3);
   font-family: var(--font-mono);
-  font-size: 0.58rem;
+  font-size: var(--text-micro);
   letter-spacing: 0.08em;
   line-height: 1.5;
   text-transform: uppercase;
@@ -624,7 +624,7 @@
 
 .dossier-head .archive-mark strong {
   color: var(--cinnabar-deep);
-  font-size: 0.68rem;
+  font-size: var(--text-support);
   font-weight: 600;
 }
 
@@ -640,7 +640,7 @@
   display: block;
   color: var(--ink-3);
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: var(--text-micro);
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -686,7 +686,7 @@
   max-width: 11rem;
   color: var(--ink-3);
   font-family: var(--font-ui);
-  font-size: 0.66rem;
+  font-size: var(--text-micro);
   line-height: 1.6;
 }
 
@@ -763,9 +763,9 @@
   display: flex;
   align-items: center;
   gap: 0.8rem;
-  color: var(--ink-3);
+  color: var(--ink-2);
   font-family: var(--font-ui);
-  font-size: 0.66rem;
+  font-size: var(--text-support);
 }
 
 /* 入场：一张纸盖住页面，印章落下后再揭开 */
@@ -808,7 +808,7 @@ html.js .intro-veil.is-visible {
 .intro-state {
   margin-block-start: 0.55rem;
   color: var(--cinnabar-deep);
-  font-size: 0.6rem;
+  font-size: var(--text-support);
   letter-spacing: 0.12em;
   transition:
     opacity var(--dur-ui) var(--ease-out),
@@ -974,7 +974,7 @@ html.js .intro-veil.is-visible {
   background: rgba(250, 246, 238, 0.38);
   color: var(--cinnabar-deep);
   font-family: var(--font-ui);
-  font-size: 0.82rem;
+  font-size: var(--text-support);
   letter-spacing: 0.08em;
   transition:
     opacity var(--dur-ui) var(--ease-out),
@@ -1010,9 +1010,9 @@ html.js .intro-veil.is-visible {
 }
 
 .intro-note {
-  color: var(--ink-3);
+  color: var(--ink-2);
   font-family: var(--font-ui);
-  font-size: 0.7rem;
+  font-size: var(--text-support);
   line-height: 1.7;
 }
 
@@ -1052,9 +1052,9 @@ html.js .intro-veil.is-visible {
   border: 1px solid var(--line);
   background: rgba(244, 239, 229, 0.84);
   background: color-mix(in srgb, var(--paper) 84%, transparent);
-  color: var(--ink-3);
+  color: var(--ink-2);
   font-family: var(--font-ui);
-  font-size: 0.68rem;
+  font-size: var(--text-control);
   backdrop-filter: blur(6px);
   transition:
     opacity var(--dur-ui) var(--ease-out),
@@ -1097,16 +1097,16 @@ html.js .intro-veil.is-visible {
   align-items: flex-start;
   gap: 0.65rem;
   writing-mode: vertical-rl;
-  color: var(--ink-3);
+  color: var(--ink-2);
   font-family: var(--font-ui);
-  font-size: 0.68rem;
+  font-size: var(--text-support);
   letter-spacing: 0.08em;
 }
 
 .chapter-kicker .num {
   color: var(--cinnabar);
   font-family: var(--font-mono);
-  font-size: 0.58rem;
+  font-size: var(--text-micro);
   letter-spacing: 0.06em;
 }
 
@@ -1128,7 +1128,7 @@ html.js .intro-veil.is-visible {
   max-width: 21rem;
   color: var(--ink-2);
   font-family: var(--font-ui);
-  font-size: 0.82rem;
+  font-size: var(--text-support);
   line-height: 1.85;
 }
 
@@ -1322,7 +1322,7 @@ html.js .intro-veil.is-visible {
   gap: 0.6rem;
   color: var(--ink-2);
   font-family: var(--font-ui);
-  font-size: 0.78rem;
+  font-size: var(--text-support);
   line-height: 1.7;
   counter-increment: note;
 }
@@ -1331,7 +1331,7 @@ html.js .intro-veil.is-visible {
   content: "0" counter(note);
   color: var(--cinnabar);
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: var(--text-micro);
   letter-spacing: 0.05em;
 }
 
@@ -1339,7 +1339,7 @@ html.js .intro-veil.is-visible {
   max-width: 18rem;
   padding-inline-start: 1rem;
   border-inline-start: 1px solid var(--line-strong);
-  color: var(--ink-3);
+  color: var(--ink-2);
   font-family: var(--font-display);
   font-size: 0.92rem;
   line-height: 1.8;
@@ -1349,7 +1349,7 @@ html.js .intro-veil.is-visible {
   display: block;
   margin-block-start: 0.65rem;
   font-family: var(--font-ui);
-  font-size: 0.65rem;
+  font-size: var(--text-support);
   font-style: normal;
   letter-spacing: 0.04em;
 }
@@ -1421,9 +1421,9 @@ html.js .intro-veil.is-visible {
 
 .filter-label {
   min-width: 3.2rem;
-  color: var(--ink-3);
+  color: var(--ink-2);
   font-family: var(--font-ui);
-  font-size: 0.68rem;
+  font-size: var(--text-support);
   letter-spacing: 0.04em;
 }
 
@@ -1441,7 +1441,7 @@ html.js .intro-veil.is-visible {
   background: transparent;
   color: var(--ink-2);
   font-family: var(--font-ui);
-  font-size: 0.72rem;
+  font-size: var(--text-control);
   line-height: 1.4;
   transition:
     color var(--dur-tap) var(--ease-out),
@@ -1465,6 +1465,7 @@ html.js .intro-veil.is-visible {
 }
 
 .filter-search {
+  max-width: 100%;
   display: flex;
   align-items: center;
   gap: 0.45rem;
@@ -1480,13 +1481,14 @@ html.js .intro-veil.is-visible {
 }
 
 .filter-search input {
+  min-width: 0;
   width: 100%;
   padding: 0.3rem 0;
   border: 0;
   background: transparent;
   color: var(--ink);
   font-family: var(--font-ui);
-  font-size: 0.75rem;
+  font-size: 1rem;
   outline: 0;
 }
 
@@ -1507,9 +1509,9 @@ html.js .intro-veil.is-visible {
 
 .view-switch button {
   padding: 0.38rem 0.72rem;
-  color: var(--ink-3);
+  color: var(--ink-2);
   font-family: var(--font-ui);
-  font-size: 0.7rem;
+  font-size: var(--text-control);
 }
 
 .view-switch button[aria-pressed="true"] {
@@ -1518,9 +1520,9 @@ html.js .intro-veil.is-visible {
 }
 
 .filter-count {
-  color: var(--ink-3);
+  color: var(--ink-2);
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: var(--text-support);
   letter-spacing: 0.05em;
   white-space: nowrap;
 }
@@ -1637,11 +1639,6 @@ html.js .intro-veil.is-visible {
   min-height: 18rem;
 }
 
-.dossier-card--wide .card-photo {
-  height: 100%;
-  aspect-ratio: auto;
-}
-
 .dossier-card--wide .card-body {
   padding: 1rem 0.8rem 0.5rem;
 }
@@ -1654,11 +1651,18 @@ html.js .intro-veil.is-visible {
   position: relative;
   z-index: 1;
   overflow: hidden;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  flex-shrink: 0;
+  align-self: start;
   aspect-ratio: 4 / 5;
   background: var(--paper-deep);
 }
 
 .card-photo img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -1699,7 +1703,7 @@ html.js .intro-veil.is-visible {
   background: rgba(250, 246, 238, 0.88);
   color: var(--ink-2);
   font-family: var(--font-mono);
-  font-size: 0.55rem;
+  font-size: var(--text-micro);
   letter-spacing: 0.06em;
   writing-mode: vertical-rl;
   text-orientation: mixed;
@@ -1719,7 +1723,7 @@ html.js .intro-veil.is-visible {
   background: rgba(244, 239, 229, 0.18);
   color: var(--cinnabar);
   font-family: var(--font-display);
-  font-size: 0.7rem;
+  font-size: var(--text-support);
   line-height: 1.05;
   text-align: center;
   transform: rotate(-9deg);
@@ -1750,9 +1754,9 @@ html.js .intro-veil.is-visible {
 }
 
 .card-life {
-  color: var(--ink-3);
+  color: var(--ink-2);
   font-family: var(--font-mono);
-  font-size: 0.58rem;
+  font-size: var(--text-support);
   letter-spacing: 0.05em;
 }
 
@@ -1760,20 +1764,25 @@ html.js .intro-veil.is-visible {
   margin: 0;
   color: var(--cinnabar);
   font-family: var(--font-ui);
-  font-size: 0.62rem;
+  font-size: var(--text-support);
   letter-spacing: 0.14em;
 }
 
 .card-role {
   color: var(--cinnabar-deep);
   font-family: var(--font-ui);
-  font-size: 0.68rem;
+  font-size: var(--text-support);
 }
 
 .card-line {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  min-height: 5.16em;
   margin-block-start: 0.2rem;
   color: var(--ink-2);
-  font-size: 0.86rem;
+  font-size: 1rem;
   line-height: 1.72;
 }
 
@@ -1786,20 +1795,15 @@ html.js .intro-veil.is-visible {
 }
 
 .card-keywords span {
-  color: var(--ink-3);
+  color: var(--ink-2);
   font-family: var(--font-ui);
-  font-size: 0.62rem;
+  font-size: var(--text-support);
 }
 
 .card-keywords span + span::before {
   content: "·";
   margin-inline-end: 0.35rem;
   color: var(--cinnabar);
-}
-
-.dossier-card--featured .card-photo {
-  aspect-ratio: auto;
-  min-height: 20rem;
 }
 
 .dossier-card--featured .card-body {
@@ -1879,7 +1883,7 @@ html.js .intro-veil.is-visible {
   padding: 0.65rem 1.1rem;
   border: 1px solid var(--ink);
   font-family: var(--font-ui);
-  font-size: 0.75rem;
+  font-size: var(--text-control);
 }
 
 .is-filtering .dossier-card:not(.archive-gap) {
@@ -1940,7 +1944,7 @@ html.js .intro-veil.is-visible {
   max-width: 25rem;
   color: var(--ink-2);
   font-family: var(--font-ui);
-  font-size: 0.75rem;
+  font-size: var(--text-support);
   line-height: 1.75;
 }
 
@@ -1969,15 +1973,15 @@ html.js .intro-veil.is-visible {
 
 .year-readout span {
   padding-block-end: 0.45rem;
-  color: var(--ink-3);
+  color: var(--ink-2);
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: var(--text-support);
   letter-spacing: 0.08em;
 }
 
 .year-track {
   position: relative;
-  padding-block: 1.6rem 2.2rem;
+  padding-block: 1.6rem 7rem;
 }
 
 .year-track::before {
@@ -2048,7 +2052,7 @@ html.js .intro-veil.is-visible {
 }
 
 .year-tick.is-raised {
-  transform: translate(-50%, -0.9rem);
+  transform: translate(-50%, -2.5rem);
 }
 
 .year-tick {
@@ -2058,9 +2062,9 @@ html.js .intro-veil.is-visible {
   flex-direction: column;
   align-items: center;
   gap: 0.2rem;
-  color: var(--ink-4);
+  color: var(--ink-2);
   font-family: var(--font-mono);
-  font-size: 0.52rem;
+  font-size: var(--text-support);
   transform: translateX(-50%);
   transition: color var(--dur-ui) var(--ease-out);
 }
@@ -2106,7 +2110,7 @@ html.js .intro-veil.is-visible {
 .year-person .yp-no {
   color: var(--cinnabar);
   font-family: var(--font-mono);
-  font-size: 0.58rem;
+  font-size: var(--text-micro);
 }
 
 .year-person .yp-name {
@@ -2116,9 +2120,9 @@ html.js .intro-veil.is-visible {
 
 .year-person .yp-label {
   display: block;
-  color: var(--ink-3);
+  color: var(--ink-2);
   font-family: var(--font-ui);
-  font-size: 0.68rem;
+  font-size: var(--text-support);
   line-height: 1.55;
 }
 
@@ -2130,8 +2134,8 @@ html.js .intro-veil.is-visible {
 .year-empty {
   padding: 1rem 0.8rem;
   border-top: 1px solid var(--line);
-  color: var(--ink-3);
-  font-size: 0.82rem;
+  color: var(--ink-2);
+  font-size: var(--text-support);
 }
 
 /* ============================================================
@@ -2283,7 +2287,7 @@ html.js .intro-veil.is-visible {
 .era-index {
   color: var(--cinnabar-deep);
   font-family: var(--font-mono);
-  font-size: 0.58rem;
+  font-size: var(--text-micro);
   letter-spacing: 0.1em;
 }
 
@@ -2318,7 +2322,7 @@ html.js .intro-veil.is-visible {
   border: 1px solid var(--line);
   color: var(--ink);
   font-family: var(--font-ui);
-  font-size: 0.7rem;
+  font-size: var(--text-control);
   text-decoration: none;
   transition:
     border-color var(--dur-tap) var(--ease-out),
@@ -2338,13 +2342,14 @@ html.js .intro-veil.is-visible {
 }
 
 .era-footnote {
-  color: var(--ink-3);
+  color: var(--ink-2);
   font-family: var(--font-ui);
-  font-size: 0.62rem;
+  font-size: var(--text-support);
   line-height: 1.6;
 }
 
 .era-controls {
+  flex-wrap: wrap;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -2377,6 +2382,7 @@ html.js .intro-veil.is-visible {
 }
 
 .era-dots {
+  flex-wrap: wrap;
   display: flex;
   align-items: center;
   gap: 0.55rem;
@@ -2386,9 +2392,9 @@ html.js .intro-veil.is-visible {
   display: flex;
   align-items: center;
   gap: 0.35rem;
-  color: rgba(250, 246, 238, 0.48);
+  color: rgba(250, 246, 238, 0.78);
   font-family: var(--font-mono);
-  font-size: 0.56rem;
+  font-size: var(--text-support);
   letter-spacing: 0.05em;
   transition: color var(--dur-ui) var(--ease-out);
 }
@@ -2411,9 +2417,9 @@ html.js .intro-veil.is-visible {
 }
 
 .era-hint {
-  color: rgba(250, 246, 238, 0.48);
+  color: rgba(250, 246, 238, 0.78);
   font-family: var(--font-ui);
-  font-size: 0.62rem;
+  font-size: var(--text-support);
 }
 
 /* ============================================================
@@ -2473,7 +2479,7 @@ html.js .intro-veil.is-visible {
 .keyword-btn .kw-en {
   color: var(--ink-4);
   font-family: var(--font-mono);
-  font-size: 0.55rem;
+  font-size: var(--text-micro);
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -2501,7 +2507,10 @@ html.js .intro-veil.is-visible {
 
 .spirit-map {
   position: relative;
-  min-height: clamp(31rem, 54vh, 38rem);
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 2rem 1rem;
+  padding: 1.5rem;
   overflow: hidden;
   border: 1px solid var(--line);
   background:
@@ -2577,19 +2586,17 @@ html.js .intro-veil.is-visible {
 }
 
 .spirit-node {
-  position: absolute;
+  position: relative;
   z-index: 2;
-  inset-inline-start: var(--x);
-  inset-block-start: var(--y);
   display: flex;
-  width: 6.4rem;
+  width: 100%;
+  min-width: 0;
   flex-direction: column;
   align-items: center;
   gap: 0.42rem;
   color: var(--ink);
   text-align: center;
   text-decoration: none;
-  transform: translate(-50%, -50%);
   transition:
     opacity var(--dur-ui) var(--ease-out),
     transform var(--dur-ui) var(--ease-out);
@@ -2631,9 +2638,9 @@ html.js .intro-veil.is-visible {
 }
 
 .spirit-node .node-role {
-  color: var(--ink-3);
+  color: var(--ink-2);
   font-family: var(--font-ui);
-  font-size: 0.58rem;
+  font-size: var(--text-support);
   line-height: 1.3;
 }
 
@@ -2698,26 +2705,24 @@ html.js .intro-veil.is-visible {
 }
 
 .spirit-center-note {
-  position: absolute;
+  position: relative;
+  grid-column: 1 / -1;
+  order: -1;
   z-index: 0;
-  inset-inline-start: 50%;
-  inset-block-start: 50%;
-  width: 8.4rem;
-  color: var(--ink-3);
+  color: var(--ink-2);
   font-family: var(--font-display);
-  font-size: 0.72rem;
+  font-size: var(--text-support);
   line-height: 1.7;
   text-align: center;
-  transform: translate(-50%, -50%);
   pointer-events: none;
-  opacity: 0.62;
+  opacity: 1;
 }
 
 .spirit-center-note strong {
   display: block;
   margin-block-end: 0.3rem;
   color: var(--cinnabar-deep);
-  font-size: 0.82rem;
+  font-size: var(--text-support);
   font-weight: 500;
 }
 
@@ -2735,14 +2740,14 @@ html.js .intro-veil.is-visible {
 .spirit-result p {
   color: var(--ink-2);
   font-family: var(--font-ui);
-  font-size: 0.75rem;
+  font-size: var(--text-support);
   line-height: 1.7;
 }
 
 .spirit-result a {
   color: var(--cinnabar-deep);
   font-family: var(--font-ui);
-  font-size: 0.72rem;
+  font-size: var(--text-control);
   text-underline-offset: 0.25em;
 }
 
@@ -2834,9 +2839,9 @@ html.js .intro-veil.is-visible {
   margin-block-start: 2rem;
   padding-block-start: 1rem;
   border-top: 1px solid rgba(250, 246, 238, 0.16);
-  color: rgba(250, 246, 238, 0.48);
+  color: rgba(250, 246, 238, 0.78);
   font-family: var(--font-ui);
-  font-size: 0.68rem;
+  font-size: var(--text-support);
   line-height: 1.75;
 }
 
@@ -2868,9 +2873,9 @@ html.js .intro-veil.is-visible {
   display: block;
   padding-block-end: 0.85rem;
   border-bottom: 1px solid var(--line);
-  color: var(--ink-3);
+  color: var(--ink-2);
   font-family: var(--font-mono);
-  font-size: 0.55rem;
+  font-size: var(--text-support);
   letter-spacing: 0.1em;
 }
 
@@ -2892,9 +2897,9 @@ html.js .intro-veil.is-visible {
 }
 
 .field label {
-  color: var(--ink-3);
+  color: var(--ink-2);
   font-family: var(--font-ui);
-  font-size: 0.68rem;
+  font-size: var(--text-control);
 }
 
 .field input,
@@ -2931,9 +2936,9 @@ html.js .intro-veil.is-visible {
 }
 
 .field-hint {
-  color: var(--ink-4);
+  color: var(--ink-2);
   font-family: var(--font-ui);
-  font-size: 0.6rem;
+  font-size: var(--text-support);
   line-height: 1.5;
 }
 
@@ -2948,7 +2953,7 @@ html.js .intro-veil.is-visible {
   background: var(--cinnabar);
   color: var(--paper-raised);
   font-family: var(--font-ui);
-  font-size: 0.76rem;
+  font-size: var(--text-control);
   transition:
     background-color var(--dur-tap) var(--ease-out),
     transform var(--dur-tap) var(--ease-out);
@@ -2989,7 +2994,7 @@ html.js .intro-veil.is-visible {
   border-bottom: 1px solid var(--line-strong);
   color: var(--ink-2);
   font-family: var(--font-ui);
-  font-size: 0.7rem;
+  font-size: var(--text-control);
   text-decoration: none;
 }
 
@@ -3002,9 +3007,9 @@ html.js .intro-veil.is-visible {
 .card-status {
   min-height: 1.2rem;
   margin-block-start: 0.5rem;
-  color: var(--ink-3);
+  color: var(--ink-2);
   font-family: var(--font-ui);
-  font-size: 0.64rem;
+  font-size: var(--text-support);
 }
 
 .card-dom-fallback {
@@ -3041,15 +3046,15 @@ html.js .intro-veil.is-visible {
   margin-block-start: 0.8rem;
   color: var(--ink-2);
   font-family: var(--font-ui);
-  font-size: 0.76rem;
+  font-size: var(--text-support);
   line-height: 1.8;
 }
 
 .footer-col h3 {
   margin-block-end: 0.8rem;
-  color: var(--ink-3);
+  color: var(--ink-2);
   font-family: var(--font-ui);
-  font-size: 0.66rem;
+  font-size: var(--text-support);
   font-weight: 500;
   letter-spacing: 0.05em;
 }
@@ -3064,7 +3069,7 @@ html.js .intro-veil.is-visible {
 .footer-col span {
   color: var(--ink-2);
   font-family: var(--font-ui);
-  font-size: 0.72rem;
+  font-size: var(--text-control);
   line-height: 1.7;
   text-decoration: none;
 }
@@ -3085,9 +3090,9 @@ html.js .intro-veil.is-visible {
   margin: clamp(2.5rem, 5vw, 4rem) auto 0;
   padding-block-start: 1rem;
   border-top: 1px solid var(--line);
-  color: var(--ink-3);
+  color: var(--ink-2);
   font-family: var(--font-ui);
-  font-size: 0.64rem;
+  font-size: var(--text-support);
   line-height: 1.7;
 }
 
@@ -3290,10 +3295,6 @@ html.js .intro-veil.is-visible {
     grid-template-columns: minmax(9rem, 0.7fr) minmax(0, 1.3fr);
   }
 
-  .dossier-card--featured .card-photo {
-    height: 100%;
-  }
-
   .chronology-main {
     grid-template-columns: 1fr;
   }
@@ -3390,18 +3391,8 @@ html.js .intro-veil.is-visible {
     display: flex;
   }
 
-  .dossier-card--featured .card-photo {
-    height: auto;
-    aspect-ratio: 4 / 5;
-  }
-
   .dossier-card--wide {
     display: flex;
-  }
-
-  .dossier-card--wide .card-photo {
-    height: auto;
-    aspect-ratio: 4 / 5;
   }
 
   .era-panel {
@@ -3469,9 +3460,9 @@ html.js .intro-veil.is-visible {
 
   .spirit-mobile-list .ml-role {
     display: block;
-    color: var(--ink-3);
+    color: var(--ink-2);
     font-family: var(--font-ui);
-    font-size: 0.62rem;
+    font-size: var(--text-support);
   }
 
   .field-row {
@@ -3580,7 +3571,7 @@ html.js .intro-veil.is-visible {
   }
 
   .time-anchor {
-    font-size: 0.6rem;
+    font-size: var(--text-support);
   }
 
   .filter-row {
@@ -3608,7 +3599,7 @@ html.js .intro-veil.is-visible {
   }
 
   .era-dot {
-    font-size: 0.48rem;
+    font-size: var(--text-support);
   }
 
   .keyword-btn .kw-cn {
@@ -3658,4 +3649,40 @@ html.js .intro-veil.is-visible {
 .archive-gap[hidden],
 .index-grid[hidden] {
   display: none !important;
+}
+
+/* Keep enlarged year labels apart on compact tracks. The range still selects every year. */
+.year-tick[data-year="2017"] { transform: translate(-50%, -5rem); }
+@media (max-width: 560px) {
+  .year-tick:not([data-year="1924"]):not([data-year="1958"]):not([data-year="1978"]):not([data-year="2026"]) { display: none; }
+}
+
+@media (max-width: 560px) {
+  .year-track { padding-block-end: 2.2rem; }
+}
+
+/* Room for enlarged labels without covering the reading area. */
+@media (min-width: 901px) and (max-width: 1200px) {
+  .spirit-map { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 680px) {
+  .filter-bar { position: static; gap: 0.85rem; }
+  .filter-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0.5rem 0.75rem; }
+  .filter-label { grid-column: 1; grid-row: 1; min-width: 0; }
+  .filter-count { grid-column: 2; grid-row: 1; }
+  .chip-set { grid-column: 1 / -1; grid-row: 2; flex-wrap: nowrap; overflow-x: auto; padding: 0.2rem 0.25rem 0.45rem; scroll-padding-inline: 0.25rem; }
+  .chip { flex-shrink: 0; }
+  .view-switch { grid-column: 2; grid-row: 1; }
+  .filter-search { grid-column: 1 / -1; grid-row: 3; min-width: 0; }
+  .filter-spacer { display: none; }
+  .footer-col ul { gap: 0.65rem; }
+}
+
+/* Let the mobile cover grow with its text instead of overlapping the stamp. */
+@media (max-width: 680px) {
+  .dossier { position: relative; inset-block-start: auto; aspect-ratio: auto; }
+  .dossier-title { margin-block-start: 1.5rem; }
+  .dossier-lines { display: none; }
+  .dossier-foot { position: static; margin-block-start: 1rem; }
+  .seal--hero { position: relative; inset: auto; margin: 1.5rem 0 0 0.5rem; }
 }

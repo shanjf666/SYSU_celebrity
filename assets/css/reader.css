@@ -1,5 +1,5 @@
-@import url("tokens.css?v=20261019g");
-@import url("base.css?v=20261019g");
+@import url("tokens.css?v=20261023c");
+@import url("base.css?v=20261023c");
 
 @view-transition {
   navigation: auto;
@@ -60,7 +60,7 @@
   gap: 0.5rem;
   color: var(--ink-2);
   font-family: var(--font-ui);
-  font-size: 0.74rem;
+  font-size: .9375rem;
   text-decoration: none;
 }
 
@@ -75,7 +75,7 @@
 .reader-file-no {
   color: var(--ink-3);
   font-family: var(--font-mono);
-  font-size: 0.6rem;
+  font-size: .75rem;
   letter-spacing: 0.08em;
 }
 
@@ -95,7 +95,7 @@
   border: 1px solid transparent;
   color: var(--ink-2);
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: .9375rem;
   line-height: 1;
 }
 
@@ -112,9 +112,9 @@
 
 .reader-size-readout {
   min-width: 2.6rem;
-  color: var(--ink-3);
+  color: var(--ink-2);
   font-family: var(--font-mono);
-  font-size: 0.58rem;
+  font-size: .8125rem;
   text-align: center;
 }
 
@@ -158,7 +158,7 @@
 .portrait-plate {
   position: relative;
   z-index: 1;
-  padding: 0.75rem 0.75rem 3.2rem;
+  padding: 0.75rem;
   background-color: var(--paper-raised);
   background-image:
     linear-gradient(rgba(250, 246, 238, 0.74), rgba(250, 246, 238, 0.86)),
@@ -196,17 +196,16 @@
 }
 
 .portrait-caption {
-  position: absolute;
-  inset-inline: 0.9rem;
-  inset-block-end: 0.8rem;
+  position: relative;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
   gap: 1rem;
-  color: var(--ink-3);
+  color: var(--ink-2);
   font-family: var(--font-ui);
-  font-size: 0.62rem;
+  font-size: .875rem;
   line-height: 1.6;
+  margin-block-start: 0.75rem;
 }
 
 .portrait-caption .caption-tag {
@@ -214,7 +213,7 @@
   border: 1px solid var(--cinnabar);
   color: var(--cinnabar-deep);
   font-family: var(--font-mono);
-  font-size: 0.52rem;
+  font-size: .75rem;
   letter-spacing: 0.05em;
 }
 
@@ -249,7 +248,8 @@
   align-items: center;
   gap: 0.65rem;
   margin-block-end: 1.4rem;
-  color: var(--ink-3);
+  color: var(--ink-2);
+  font-size: .75rem;
 }
 
 .person-kicker .dot {
@@ -270,9 +270,9 @@
 
 .person-life {
   margin-block-start: 1rem;
-  color: var(--ink-3);
+  color: var(--ink-2);
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: .9375rem;
   letter-spacing: 0.07em;
 }
 
@@ -285,7 +285,7 @@
   border-block: 1px solid var(--line);
   color: var(--ink-2);
   font-family: var(--font-ui);
-  font-size: 0.74rem;
+  font-size: .9375rem;
 }
 
 .person-meta strong {
@@ -315,9 +315,9 @@
 .person-quote cite {
   display: block;
   margin-block-start: 0.55rem;
-  color: var(--ink-3);
+  color: var(--ink-2);
   font-family: var(--font-ui);
-  font-size: 0.65rem;
+  font-size: .875rem;
   font-style: normal;
 }
 
@@ -352,9 +352,9 @@
 
 .margin-block h2 {
   margin-block-end: 0.55rem;
-  color: var(--ink-3);
+  color: var(--ink-2);
   font-family: var(--font-ui);
-  font-size: 0.62rem;
+  font-size: .9375rem;
   font-weight: 500;
   letter-spacing: 0.04em;
 }
@@ -364,14 +364,14 @@
 .margin-block span {
   color: var(--ink-2);
   font-family: var(--font-ui);
-  font-size: 0.7rem;
+  font-size: .9375rem;
   line-height: 1.7;
 }
 
 .margin-no {
   color: var(--cinnabar);
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: .75rem;
   letter-spacing: 0.07em;
 }
 
@@ -384,7 +384,7 @@
   position: relative;
   display: block;
   padding-inline-start: 0.75rem;
-  color: var(--ink-3);
+  color: var(--ink-2);
   text-decoration: none;
   transition: color var(--dur-tap) var(--ease-out);
 }
@@ -437,7 +437,7 @@
 .article-section h2 .section-no {
   color: var(--cinnabar);
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: .75rem;
   font-weight: 500;
   letter-spacing: 0.06em;
 }
@@ -468,9 +468,9 @@
 .article-quote cite {
   display: block;
   margin-block-start: 0.6rem;
-  color: var(--ink-3);
+  color: var(--ink-2);
   font-family: var(--font-ui);
-  font-size: 0.58em;
+  font-size: .875rem;
   font-style: normal;
 }
 
@@ -493,7 +493,7 @@
   border-inline-start: 2px solid var(--cinnabar);
   color: var(--ink-2);
   font-family: var(--font-ui);
-  font-size: 0.78rem;
+  font-size: .9375rem;
   line-height: 1.85;
 }
 
@@ -508,7 +508,7 @@
   border-bottom: 1px solid var(--line-strong);
   color: var(--cinnabar-deep);
   font-family: var(--font-ui);
-  font-size: 0.65rem;
+  font-size: .875rem;
 }
 
 .article-timeline {
@@ -563,7 +563,7 @@
 .timeline-item time {
   color: var(--cinnabar-deep);
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: .875rem;
   letter-spacing: 0.03em;
 }
 
@@ -595,9 +595,9 @@
   display: grid;
   grid-template-columns: 1.6rem minmax(0, 1fr);
   gap: 0.3rem;
-  color: var(--ink-3);
+  color: var(--ink-2);
   font-family: var(--font-ui);
-  font-size: 0.7rem;
+  font-size: .9375rem;
   line-height: 1.75;
   counter-increment: source;
 }
@@ -606,7 +606,7 @@
   content: "[" counter(source) "]";
   color: var(--cinnabar);
   font-family: var(--font-mono);
-  font-size: 0.6rem;
+  font-size: .8125rem;
 }
 
 .source-list a {
@@ -631,9 +631,9 @@
 
 .aside-card h2 {
   margin-block-end: 0.55rem;
-  color: var(--ink-3);
+  color: var(--ink-2);
   font-family: var(--font-ui);
-  font-size: 0.62rem;
+  font-size: .9375rem;
   font-weight: 500;
   letter-spacing: 0.04em;
 }
@@ -641,7 +641,7 @@
 .aside-card p {
   color: var(--ink-2);
   font-family: var(--font-ui);
-  font-size: 0.7rem;
+  font-size: .875rem;
   line-height: 1.75;
 }
 
@@ -668,14 +668,14 @@
 
 .aside-person span {
   font-family: var(--font-display);
-  font-size: 0.86rem;
+  font-size: 1rem;
 }
 
 .aside-person small {
   display: block;
-  color: var(--ink-3);
+  color: var(--ink-2);
   font-family: var(--font-ui);
-  font-size: 0.56rem;
+  font-size: .8125rem;
   line-height: 1.5;
 }
 
@@ -704,9 +704,9 @@
 }
 
 .pager-link span {
-  color: var(--ink-3);
+  color: var(--ink-2);
   font-family: var(--font-ui);
-  font-size: 0.68rem;
+  font-size: .9375rem;
 }
 
 .pager-link strong {
@@ -722,9 +722,9 @@
 .reader-footer {
   padding: 2rem var(--gutter);
   border-top: 1px solid var(--line);
-  color: var(--ink-3);
+  color: var(--ink-2);
   font-family: var(--font-ui);
-  font-size: 0.64rem;
+  font-size: .8125rem;
   text-align: center;
 }
 
@@ -768,7 +768,7 @@
   gap: 0.6rem 1rem;
   color: rgba(250, 246, 238, 0.72);
   font-family: var(--font-ui);
-  font-size: 0.7rem;
+  font-size: .875rem;
   line-height: 1.7;
 }
 

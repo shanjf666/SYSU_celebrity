@@ -46,6 +46,11 @@
   --font-mono: "Cascadia Mono", "SFMono-Regular", "Consolas", "Liberation Mono",
     monospace;
 
+  /* 全站辅助文字：操作 15px、说明 14px、装饰 12px。 */
+  --text-control: 0.9375rem;
+  --text-support: 0.875rem;
+  --text-micro: 0.75rem;
+
   /* 版式 */
   --measure: 38rem;
   --measure-wide: 52rem;
