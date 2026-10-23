@@ -201,17 +201,10 @@
 
     drawStamp(width - 172, 600, 132);
 
-    ctx.strokeStyle = "rgba(31,29,25,.28)";
-    ctx.beginPath();
-    ctx.moveTo(92, 720);
-    ctx.lineTo(width - 92, 720);
-    ctx.stroke();
     ctx.fillStyle = "#766f65";
     ctx.font = '400 15px "Cascadia Mono", "Consolas", monospace';
-    ctx.textAlign = "left";
-    ctx.fillText("仅存于你的浏览器 · 不上传", 94, 744);
     ctx.textAlign = "right";
-    ctx.fillText("NO. " + archiveNo.slice(-4), width - 94, 744);
+    ctx.fillText("NO. " + archiveNo.slice(-4), width - 94, 690);
   }
 
   function updateFallback({ name, role, line }) {

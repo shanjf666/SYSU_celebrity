@@ -159,11 +159,6 @@
     noiseBurst(0.1, 900, 0.03);
   }
 
-  function playTick() {
-    if (!soundOn) return;
-    noiseBurst(0.04, 2600, 0.012);
-  }
-
   if (soundToggle) {
     updateSoundLabel();
     soundToggle.addEventListener("click", () => {
@@ -370,7 +365,9 @@
   const resetFilters = $("#resetFilters");
   const archiveGap = $(".archive-gap");
   const viewButtons = $$(".view-switch button");
-  const chronology = $("#chronology");
+  const footprints = $("#footprints");
+  const footprintList = $("#footprintList");
+  const peopleData = Array.isArray(window.ARCHIVE_PEOPLE) ? window.ARCHIVE_PEOPLE : [];
   const filterState = { role: "all", keyword: "all", query: "", view: "cards" };
   let filterTimer = 0;
   const dossierText = new Map(
@@ -440,6 +437,7 @@
 
   function applyFilters({ animate = true } = {}) {
     if (!grid) return;
+    window.clearTimeout(filterTimer);
     const matches = cards.filter(cardMatches);
     const anyFilter =
       filterState.role !== "all" || filterState.keyword !== "all" || filterState.query !== "";
@@ -452,15 +450,19 @@
       });
       if (archiveGap) archiveGap.hidden = anyFilter || matches.length === 0;
       if (emptyState) emptyState.hidden = matches.length !== 0 || !anyFilter;
+      const footprintView = filterState.view === "footprints";
+      grid.hidden = footprintView;
+      if (footprints) footprints.hidden = !footprintView || matches.length === 0;
+      renderFootprints(matches);
       if (filterCount) {
         filterCount.textContent = `${String(matches.length).padStart(2, "0")} 份档案`;
       }
-      if (filterState.query && filterState.view !== "years") {
+      if (filterState.query) {
         void grid.offsetHeight;
         alignSearchResults();
         requestAnimationFrame(() => alignSearchResults());
       }
-      if (animate && !reducedMotion) {
+      if (animate && !reducedMotion && !footprintView) {
         matches.forEach((card, index) => {
           card.style.animationDelay = `${Math.min(index * 34, 210)}ms`;
           card.classList.add("card-enter");
@@ -473,9 +475,8 @@
       grid.classList.remove("is-filtering");
     };
 
-    if (animate && !reducedMotion) {
+    if (animate && !reducedMotion && filterState.view === "cards") {
       grid.classList.add("is-filtering");
-      window.clearTimeout(filterTimer);
       filterTimer = window.setTimeout(update, 145);
     } else {
       update();
@@ -536,85 +537,72 @@
       viewButtons.forEach((item) =>
         item.setAttribute("aria-pressed", String(item === button))
       );
-      const yearView = filterState.view === "years";
-      if (grid) grid.hidden = yearView;
-      if (emptyState && yearView) emptyState.hidden = true;
-      if (chronology) chronology.hidden = !yearView;
-      if (yearView) {
-        updateChronology(Number($("#yearScrubber")?.value || 1924));
-        $("#yearScrubber")?.focus({ preventScroll: true });
-      }
+      applyFilters({ animate: false });
     });
   });
 
-  /* ============================================================
-     年代尺
-     ============================================================ */
-
-  const yearScrubber = $("#yearScrubber");
-  const yearReadout = $("#yearReadout");
-  const yearPeople = $("#yearPeople");
-  const yearTicks = $$(".year-tick");
-  const peopleData = Array.isArray(window.ARCHIVE_PEOPLE) ? window.ARCHIVE_PEOPLE : [];
-
-  function setRangeProgress(year) {
-    if (!yearScrubber) return;
-    const min = Number(yearScrubber.min);
-    const max = Number(yearScrubber.max);
-    const ratio = max > min ? ((year - min) / (max - min)) * 100 : 0;
-    yearScrubber.style.setProperty("--range-progress", `${ratio}%`);
-    yearScrubber.setAttribute("aria-valuetext", `${year} 年`);
-  }
-
-  function updateChronology(year) {
-    if (yearReadout) yearReadout.textContent = String(year);
-    setRangeProgress(year);
-    yearTicks.forEach((tick) => {
-      const tickYear = Number(tick.dataset.year);
-      tick.classList.toggle("is-past", tickYear <= year);
-      tick.classList.toggle("is-current", tickYear === year);
-    });
-    if (!yearPeople) return;
-    yearPeople.replaceChildren();
-    const matches = peopleData.filter((person) => Number(person.anchorYear) === year);
-    if (!matches.length) {
-      const empty = document.createElement("p");
-      empty.className = "year-empty";
-      empty.textContent = "这一年暂未收录人物。可以试试 1924、1927、1940、1953、1958、1978、1981、2017、2020。";
-      yearPeople.append(empty);
-      return;
-    }
-    matches.forEach((person) => {
+  /* 人物足迹与档案卡共用筛选结果；年份只决定排列顺序。 */
+  function renderFootprints(matches) {
+    if (!footprintList) return;
+    const ids = new Set(matches.map(card => card.dataset.person));
+    const people = peopleData.filter(person => ids.has(person.id))
+      .sort((a, b) => Number(a.anchorYear) - Number(b.anchorYear) || a.no.localeCompare(b.no));
+    const fragment = document.createDocumentFragment();
+    people.forEach(person => {
+      const item = document.createElement("li");
+      item.className = "footprint-item";
       const link = document.createElement("a");
-      link.className = "year-person";
+      link.className = "footprint-link";
       link.href = `people/${person.id}.html`;
-      link.innerHTML = `
-        <span class="yp-no">${person.no}</span>
-        <span><span class="yp-name">${person.name}</span><span class="yp-label">${person.anchorYear} · ${person.anchorLabel}</span></span>
-        <span class="yp-arrow" aria-hidden="true">→</span>
-      `;
-      yearPeople.append(link);
+      link.dataset.person = person.id;
+      const time = document.createElement("time");
+      time.className = "footprint-year";
+      time.dateTime = String(person.anchorYear);
+      time.textContent = person.anchorYear;
+      const photo = document.createElement("img");
+      photo.className = "footprint-photo";
+      photo.src = person.image;
+      photo.alt = "";
+      photo.width = 64;
+      photo.height = 80;
+      photo.loading = "lazy";
+      const copy = document.createElement("div");
+      copy.className = "footprint-copy";
+      const name = document.createElement("h4");
+      name.textContent = person.name;
+      const event = document.createElement("p");
+      event.textContent = person.anchorLabel;
+      const stage = document.createElement("span");
+      stage.className = "footprint-stage";
+      stage.textContent = person.stageLabel;
+      const arrow = document.createElement("span");
+      arrow.className = "footprint-arrow";
+      arrow.textContent = "→";
+      arrow.setAttribute("aria-hidden", "true");
+      copy.append(name, event);
+      link.append(time, photo, copy, stage, arrow);
+      item.append(link);
+      fragment.append(item);
     });
+    footprintList.replaceChildren(fragment);
   }
 
-  if (yearScrubber) {
-    yearScrubber.addEventListener("input", () => {
-      const year = Number(yearScrubber.value);
-      updateChronology(year);
-    });
-    yearScrubber.addEventListener("change", playTick);
-    updateChronology(Number(yearScrubber.value));
+  if (returningFromPerson && grid) {
+    try {
+      const saved = JSON.parse(session.get("sysu-roster-state") || "null");
+      if (saved) {
+        filterState.role = roleButtons.some(b => b.dataset.role === saved.role) ? saved.role : "all";
+        filterState.keyword = keywordButtons.some(b => b.dataset.keyword === saved.keyword) ? saved.keyword : "all";
+        filterState.query = typeof saved.query === "string" ? saved.query : "";
+        filterState.view = saved.view === "footprints" ? "footprints" : "cards";
+        if (searchInput) searchInput.value = filterState.query;
+        roleButtons.forEach(b => b.setAttribute("aria-pressed", String(b.dataset.role === filterState.role)));
+        keywordButtons.forEach(b => b.setAttribute("aria-pressed", String(b.dataset.keyword === filterState.keyword)));
+        viewButtons.forEach(b => b.setAttribute("aria-pressed", String(b.dataset.view === filterState.view)));
+      }
+    } catch { /* 忽略旧的或不可用的本地浏览状态。 */ }
   }
-
-  yearTicks.forEach((tick) => {
-    tick.addEventListener("click", () => {
-      if (!yearScrubber) return;
-      yearScrubber.value = tick.dataset.year;
-      updateChronology(Number(tick.dataset.year));
-      yearScrubber.focus({ preventScroll: true });
-      playTick();
-    });
-  });
+  applyFilters({ animate: false });
 
   /* ============================================================
      时代长卷
@@ -788,11 +776,12 @@
      返回名录时保留滚动位置
      ============================================================ */
 
-  $$(".dossier-card").forEach((card) => {
-    card.addEventListener("click", () => {
+  document.addEventListener("click", (event) => {
+    if (event.target.closest(".dossier-card, .footprint-link")) {
+      session.set("sysu-roster-state", JSON.stringify(filterState));
       session.set("sysu-roster-scroll", String(window.scrollY));
       session.set("sysu-return-from-person", "1");
-    });
+    }
   });
 
   if (

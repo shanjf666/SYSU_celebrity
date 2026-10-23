@@ -10,7 +10,7 @@
     />
     <title>青春留名 · 寻找中大的红色追光者</title>
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="assets/css/main.css?v=20261023g" />
+    <link rel="stylesheet" href="assets/css/main.css?v=20261023i" />
     <script>
       document.documentElement.classList.add("js");
     </script>
@@ -212,7 +212,7 @@
                   红色并不停在 1949 年。革命岁月是斗争，建设年代是扎根，改革时期是求真，新时代仍是一次次把自己放到需要的地方。我们想展开的，是这些具体的人、具体的决定。
                 </p>
                 <p>
-                  请把这张网页当作一间可以走进去的档案室。翻开卡片，读他们的故事；拖动年代尺，看时间如何把人推到路口；最后，留下你自己的那一页。
+                  请把这张网页当作一间可以走进去的档案室。翻开卡片，读他们的故事；沿着人物足迹，看看不同时代的经历与选择；最后，留下你自己的那一页。
                 </p>
               </div>
             </div>
@@ -252,7 +252,7 @@
             </h2>
             <div class="chapter-aside">
               <span class="aside-rule" aria-hidden="true"></span>
-              按阶段或关键词筛选，也可以拖动年代尺。
+              按阶段或关键词筛选，也可以沿着人物足迹，按时间浏览。
             </div>
           </header>
 
@@ -291,7 +291,7 @@
               </label>
               <div class="view-switch" role="group" aria-label="浏览方式">
                 <button type="button" data-view="cards" aria-pressed="true">档案卡</button>
-                <button type="button" data-view="years" aria-pressed="false">年代尺</button>
+                <button type="button" data-view="footprints" aria-pressed="false">人物足迹</button>
               </div>
             </div>
           </div>
@@ -633,44 +633,15 @@
             </div>
           </div>
 
-          <section class="chronology" id="chronology" aria-labelledby="chronologyTitle" hidden>
-            <div class="chronology-head">
-              <h3 id="chronologyTitle">拖动年代尺，找一个路口</h3>
-              <p>经过的年份会依次点亮。停在某一年，看看这一年有谁进入档案。</p>
-            </div>
-            <div class="chronology-main">
+          <section class="footprints" id="footprints" aria-labelledby="footprintsTitle" hidden>
+            <header class="footprints-head">
               <div>
-                <div class="year-readout">
-                  <strong id="yearReadout">1924</strong>
-                  <span>YEAR / 年份</span>
-                </div>
-                <div class="year-track">
-                  <input
-                    id="yearScrubber"
-                    type="range"
-                    min="1924"
-                    max="2026"
-                    step="1"
-                    value="1924"
-                    aria-label="拖动选择年份"
-                    aria-valuetext="1924 年"
-                  />
-                  <div class="year-ticks" aria-hidden="true">
-                    <span class="year-tick" data-year="1924" style="left: 0.00%">1924</span>
-                    <span class="year-tick is-raised" data-year="1927" style="left: 2.94%">1927</span>
-                    <span class="year-tick" data-year="1940" style="left: 15.69%">1940</span>
-                    <span class="year-tick is-raised" data-year="1953" style="left: 28.43%">1953</span>
-                    <span class="year-tick" data-year="1958" style="left: 33.33%">1958</span>
-                    <span class="year-tick" data-year="1978" style="left: 52.94%">1978</span>
-                    <span class="year-tick is-raised" data-year="1981" style="left: 55.88%">1981</span>
-                    <span class="year-tick" data-year="2017" style="left: 91.18%">2017</span>
-                    <span class="year-tick is-raised" data-year="2020" style="left: 94.12%">2020</span>
-                    <span class="year-tick" data-year="2026" style="left: 100.00%">2026</span>
-                  </div>
-                </div>
+                <p class="mono">FOOTPRINTS / 人物与时间</p>
+                <h3 id="footprintsTitle">人物足迹</h3>
               </div>
-              <div class="year-people" id="yearPeople" aria-live="polite"></div>
-            </div>
+              <p>按代表事迹的发生时间排列。沿着年份，读一段经历；点击人物，打开完整档案。</p>
+            </header>
+            <ol class="footprint-list" id="footprintList" aria-label="按时间排列的人物事迹"></ol>
           </section>
         </div>
       </section>
@@ -1036,12 +1007,12 @@
         .filter-bar { position: relative; }
         .filter-bar .chip,
         .view-switch,
-        #chronology { display: none; }
+        #footprints { display: none; }
       </style>
     </noscript>
 
     <script src="assets/js/data.js?v=20261022e"></script>
-    <script src="assets/js/app.js?v=20261023f" defer></script>
-    <script src="assets/js/card.js?v=20261022a" defer></script>
+    <script src="assets/js/app.js?v=20261023i" defer></script>
+    <script src="assets/js/card.js?v=20261023h" defer></script>
   </body>
 </html>
