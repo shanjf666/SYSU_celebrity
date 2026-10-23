@@ -181,11 +181,10 @@
     "click",
     (event) => {
       const target = event.target.closest(
-        ".action-primary, .dossier-card, .era-arrow, .era-dot, .card-generate"
+        ".action-primary, .dossier-card, .era-arrow, .card-generate"
       );
       if (!target) return;
       if (target.matches(".card-generate")) playStamp();
-      else if (target.matches(".era-dot")) playTick();
       else playPaper();
     },
     true
@@ -623,22 +622,35 @@
 
   const eraTrack = $("#eraTrack");
   const eraPanels = eraTrack ? $$(".era-panel", eraTrack) : [];
-  const eraDots = $$(".era-dot");
+  const eraPage = $("#eraPage");
+  const eraPrev = $("#eraPrev");
+  const eraNext = $("#eraNext");
   let eraIndex = 0;
+  let eraTarget = null;
+  let eraScrollEnd = 0;
 
   function setEraIndex(index, { scroll = false } = {}) {
     if (!eraPanels.length) return;
     const next = Math.max(0, Math.min(eraPanels.length - 1, index));
+    if (scroll) {
+      eraTarget = next;
+      const left = Math.min(
+        eraPanels[next].offsetLeft - eraPanels[0].offsetLeft,
+        eraTrack.scrollWidth - eraTrack.clientWidth
+      );
+      eraTrack.scrollTo({ left, behavior: reducedMotion ? "auto" : "smooth" });
+      if (Math.abs(eraTrack.scrollLeft - left) < 1) {
+        eraTarget = null;
+        syncEraIndex();
+      }
+      return;
+    }
     const changed = next !== eraIndex;
     eraIndex = next;
-    eraDots.forEach((dot) =>
-      dot.setAttribute("aria-current", String(Number(dot.dataset.slide) === eraIndex))
-    );
-    if (scroll) {
-      const first = eraPanels[0];
-      const left = eraPanels[eraIndex].offsetLeft - first.offsetLeft;
-      eraTrack.scrollTo({ left, behavior: reducedMotion ? "auto" : "smooth" });
-    }
+    const pageText = `${String(eraIndex + 1).padStart(2, "0")} / ${String(eraPanels.length).padStart(2, "0")}`;
+    if (eraPage && eraPage.textContent !== pageText) eraPage.textContent = pageText;
+    if (eraPrev) eraPrev.disabled = eraIndex === 0;
+    if (eraNext) eraNext.disabled = eraIndex === eraPanels.length - 1;
     if (changed) playPaper();
   }
 
@@ -648,7 +660,8 @@
     let closest = 0;
     let distance = Infinity;
     eraPanels.forEach((panel, index) => {
-      const delta = Math.abs(panel.offsetLeft - first - eraTrack.scrollLeft);
+      const left = Math.min(panel.offsetLeft - first, eraTrack.scrollWidth - eraTrack.clientWidth);
+      const delta = Math.abs(left - eraTrack.scrollLeft);
       if (delta < distance) {
         distance = delta;
         closest = index;
@@ -662,6 +675,8 @@
     eraTrack.addEventListener(
       "scroll",
       () => {
+        window.clearTimeout(eraScrollEnd);
+        eraScrollEnd = window.setTimeout(() => { eraTarget = null; }, 150);
         if (eraFrame) return;
         eraFrame = window.requestAnimationFrame(() => {
           syncEraIndex();
@@ -673,10 +688,10 @@
     eraTrack.addEventListener("keydown", (event) => {
       if (event.key === "ArrowLeft") {
         event.preventDefault();
-        setEraIndex(eraIndex - 1, { scroll: true });
+        setEraIndex((eraTarget ?? eraIndex) - 1, { scroll: true });
       } else if (event.key === "ArrowRight") {
         event.preventDefault();
-        setEraIndex(eraIndex + 1, { scroll: true });
+        setEraIndex((eraTarget ?? eraIndex) + 1, { scroll: true });
       } else if (event.key === "Home") {
         event.preventDefault();
         setEraIndex(0, { scroll: true });
@@ -687,13 +702,9 @@
     });
   }
 
-  $("#eraPrev")?.addEventListener("click", () => setEraIndex(eraIndex - 1, { scroll: true }));
-  $("#eraNext")?.addEventListener("click", () => setEraIndex(eraIndex + 1, { scroll: true }));
-  eraDots.forEach((dot) => {
-    dot.addEventListener("click", () =>
-      setEraIndex(Number(dot.dataset.slide), { scroll: true })
-    );
-  });
+  eraPrev?.addEventListener("click", () => setEraIndex((eraTarget ?? eraIndex) - 1, { scroll: true }));
+  eraNext?.addEventListener("click", () => setEraIndex((eraTarget ?? eraIndex) + 1, { scroll: true }));
+  syncEraIndex();
 
   /* ============================================================
      精神图谱
@@ -768,6 +779,7 @@
   window.addEventListener("resize", () => {
     window.clearTimeout(spiritResize);
     spiritResize = window.setTimeout(() => {
+      syncEraIndex();
       if (activeSpirit) renderSpiritLines(activeSpirit);
     }, 160);
   });

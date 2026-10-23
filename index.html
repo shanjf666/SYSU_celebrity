@@ -10,7 +10,7 @@
     />
     <title>青春留名 · 寻找中大的红色追光者</title>
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="assets/css/main.css?v=20261023d" />
+    <link rel="stylesheet" href="assets/css/main.css?v=20261023g" />
     <script>
       document.documentElement.classList.add("js");
     </script>
@@ -686,7 +686,7 @@
             </h2>
             <div class="chapter-aside">
               <span class="aside-rule" aria-hidden="true"></span>
-              四段横向长卷，对应革命岁月、建设探索、改革发展和新时代。用下方箭头、进度点或键盘左右键翻阅；触屏可直接拖动。
+              四段横向长卷，对应革命岁月、建设探索、改革发展和新时代。用下方箭头或键盘左右键翻阅；触屏可直接拖动。
             </div>
           </header>
 
@@ -797,17 +797,9 @@
           </div>
 
           <div class="era-controls">
-            <div class="era-arrows">
-              <button class="era-arrow" type="button" id="eraPrev" aria-label="上一个时代场景">←</button>
-              <button class="era-arrow" type="button" id="eraNext" aria-label="下一个时代场景">→</button>
-            </div>
-            <div class="era-dots" id="eraDots" role="group" aria-label="时代场景进度">
-              <button class="era-dot" type="button" data-slide="0" aria-current="true">01</button>
-              <button class="era-dot" type="button" data-slide="1" aria-current="false">02</button>
-              <button class="era-dot" type="button" data-slide="2" aria-current="false">03</button>
-              <button class="era-dot" type="button" data-slide="3" aria-current="false">04</button>
-            </div>
-            <span class="era-hint">拖动 / ← →</span>
+            <button class="era-arrow" type="button" id="eraPrev" aria-label="上一个时代场景" aria-controls="eraTrack" disabled>←</button>
+            <span class="era-page" id="eraPage" role="status" aria-live="polite" aria-atomic="true">01 / 04</span>
+            <button class="era-arrow" type="button" id="eraNext" aria-label="下一个时代场景" aria-controls="eraTrack">→</button>
           </div>
         </div>
       </section>
@@ -1049,7 +1041,7 @@
     </noscript>
 
     <script src="assets/js/data.js?v=20261022e"></script>
-    <script src="assets/js/app.js?v=20261022j" defer></script>
+    <script src="assets/js/app.js?v=20261023f" defer></script>
     <script src="assets/js/card.js?v=20261022a" defer></script>
   </body>
 </html>
