@@ -305,12 +305,6 @@
     }
   });
 
-  const replayIntro = $("#replayIntro");
-  replayIntro?.addEventListener("click", () => {
-    session.set("sysu-return-from-person", "0");
-    playIntro();
-  });
-
   /* ============================================================
      照片显影
      ============================================================ */

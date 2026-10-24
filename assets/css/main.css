@@ -2842,81 +2842,52 @@ html.js .intro-veil.is-visible {
    ============================================================ */
 
 .site-footer {
-  padding: clamp(3rem, 6vw, 5rem) var(--gutter) 2rem;
+  padding: clamp(2rem, 4vw, 3rem) var(--gutter);
+  border-top: 1px solid var(--line);
   background: var(--paper-deep);
 }
 
 .footer-inner {
   display: grid;
-  grid-template-columns: minmax(12rem, 1.2fr) minmax(0, 1fr) minmax(0, 1fr);
-  gap: clamp(2rem, 5vw, 5rem);
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.75rem 2rem;
   max-width: var(--shell);
   margin: 0 auto;
 }
 
-.footer-brand p {
-  max-width: 20rem;
-  margin-block-start: 0.8rem;
-  color: var(--ink-2);
-  font-family: var(--font-ui);
-  font-size: var(--text-support);
-  line-height: 1.8;
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
 }
 
-.footer-col h3 {
-  margin-block-end: 0.8rem;
-  color: var(--ink-2);
-  font-family: var(--font-ui);
-  font-size: var(--text-support);
-  font-weight: 500;
-  letter-spacing: 0.05em;
-}
-
-.footer-col ul {
-  display: grid;
-  gap: 0.45rem;
-}
-
-.footer-col a,
-.footer-col button,
-.footer-col span {
+.footer-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
   color: var(--ink-2);
   font-family: var(--font-ui);
   font-size: var(--text-control);
-  line-height: 1.7;
   text-decoration: none;
 }
 
-.footer-col a:hover,
-.footer-col button:hover {
+.footer-nav a:hover {
   color: var(--cinnabar-deep);
   text-decoration: underline;
   text-underline-offset: 0.25em;
 }
 
-.footer-bottom {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 1rem;
-  max-width: var(--shell);
-  margin: clamp(2.5rem, 5vw, 4rem) auto 0;
-  padding-block-start: 1rem;
-  border-top: 1px solid var(--line);
+.footer-note {
+  grid-column: 1 / -1;
   color: var(--ink-2);
   font-family: var(--font-ui);
   font-size: var(--text-support);
   line-height: 1.7;
 }
 
-.footer-bottom a {
-  color: var(--ink-2);
-  text-decoration: none;
-}
-
-.footer-bottom a:hover {
-  color: var(--cinnabar-deep);
-  text-decoration: underline;
+@media (max-width: 520px) {
+  .footer-inner { grid-template-columns: 1fr; }
 }
 
 /* ============================================================
@@ -3143,14 +3114,6 @@ html.js .intro-veil.is-visible {
   .coda-card {
     max-width: 42rem;
   }
-
-  .footer-inner {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .footer-brand {
-    grid-column: 1 / -1;
-  }
 }
 
 @media (max-width: 760px) {
@@ -3275,14 +3238,6 @@ html.js .intro-veil.is-visible {
   .field-row {
     grid-template-columns: 1fr;
   }
-
-  .footer-inner {
-    grid-template-columns: 1fr;
-  }
-
-  .footer-brand {
-    grid-column: auto;
-  }
 }
 
 @media (max-width: 520px) {
@@ -3404,10 +3359,6 @@ html.js .intro-veil.is-visible {
   .coda-card {
     transform: none;
   }
-
-  .footer-bottom {
-    display: grid;
-  }
 }
 
 .card-photo img[src*="portrait-yao-yandan"],
@@ -3458,7 +3409,6 @@ html.js .intro-veil.is-visible {
   .view-switch { grid-column: 2; grid-row: 1; }
   .filter-search { grid-column: 1 / -1; grid-row: 3; min-width: 0; }
   .filter-spacer { display: none; }
-  .footer-col ul { gap: 0.65rem; }
 }
 
 /* Let the mobile cover grow with its text instead of overlapping the stamp. */
