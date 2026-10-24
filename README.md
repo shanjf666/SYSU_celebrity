@@ -1,6 +1,12 @@
 # 青春留名
 
-中山大学红色人物档案馆网页。双击 `index.html` 或 `打开网页.bat` 即可在浏览器中打开，不需要安装任何软件或启动服务器。
+中山大学红色人物档案馆网页。本地双击 `index.html` 即可在浏览器中打开，不需要安装任何软件或启动服务器。
+
+## 在线访问
+
+[打开青春留名网站](https://shanjf666.github.io/SYSU_celebrity/)
+
+GitHub Pages 从 `main` 分支根目录发布。网站使用原生 HTML、CSS 和 JavaScript，`.nojekyll` 标记用于直接发布静态文件；后续推送到 `main` 后，GitHub 会自动更新站点。
 
 ## 文件夹说明
 
