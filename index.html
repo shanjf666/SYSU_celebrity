@@ -10,7 +10,7 @@
     />
     <title>青春留名 · 寻找中大的红色追光者</title>
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="assets/css/main.css?v=20261024f" />
+    <link rel="stylesheet" href="assets/css/main.css?v=20261024g" />
     <script>
       document.documentElement.classList.add("js");
     </script>
@@ -289,6 +289,16 @@
                 </svg>
                 <input id="rosterSearch" type="search" placeholder="姓名 / 年份 / 故事" autocomplete="off" />
               </label>
+              <div class="mobile-filter-fields">
+                <label class="mobile-filter-field" for="mobileRoleFilter">
+                  <span>阶段</span>
+                  <select id="mobileRoleFilter" aria-controls="indexGrid footprintList"></select>
+                </label>
+                <label class="mobile-filter-field" for="mobileKeywordFilter">
+                  <span>关键词</span>
+                  <select id="mobileKeywordFilter" aria-controls="indexGrid footprintList"></select>
+                </label>
+              </div>
               <div class="view-switch" role="group" aria-label="浏览方式">
                 <button type="button" data-view="cards" aria-pressed="true">档案卡</button>
                 <button type="button" data-view="footprints" aria-pressed="false">人物足迹</button>
@@ -986,13 +996,14 @@
         .skip-intro { display: none; }
         .filter-bar { position: relative; }
         .filter-bar .chip,
+        .roster .mobile-filter-fields,
         .view-switch,
         #footprints { display: none; }
       </style>
     </noscript>
 
     <script src="assets/js/data.js?v=20261022e"></script>
-    <script src="assets/js/app.js?v=20261024e" defer></script>
+    <script src="assets/js/app.js?v=20261024g" defer></script>
     <script src="assets/js/card.js?v=20261023h" defer></script>
   </body>
 </html>

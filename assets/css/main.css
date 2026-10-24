@@ -1412,6 +1412,10 @@ html.js .intro-veil.is-visible {
   backdrop-filter: blur(10px);
 }
 
+.mobile-filter-fields {
+  display: none;
+}
+
 .filter-row {
   display: flex;
   flex-wrap: wrap;
@@ -3399,16 +3403,88 @@ html.js .intro-veil.is-visible {
 @media (min-width: 901px) and (max-width: 1200px) {
   .spirit-map { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
-@media (max-width: 680px) {
-  .filter-bar { position: static; gap: 0.85rem; }
-  .filter-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0.5rem 0.75rem; }
-  .filter-label { grid-column: 1; grid-row: 1; min-width: 0; }
-  .filter-count { grid-column: 2; grid-row: 1; }
-  .chip-set { grid-column: 1 / -1; grid-row: 2; flex-wrap: nowrap; overflow-x: auto; padding: 0.2rem 0.25rem 0.45rem; scroll-padding-inline: 0.25rem; }
-  .chip { flex-shrink: 0; }
-  .view-switch { grid-column: 2; grid-row: 1; }
-  .filter-search { grid-column: 1 / -1; grid-row: 3; min-width: 0; }
-  .filter-spacer { display: none; }
+/* Keep the mobile roster heading and tools on one uninterrupted paper surface. */
+@media (max-width: 760px) {
+  .roster { padding-block-start: 2.5rem; scroll-margin-top: 5rem; }
+  .roster > .paper-sheet { inset-block-start: 0; }
+  .roster > .torn-cutout--top { display: none; }
+  .roster .chapter-head { gap: 0.75rem; margin-block-end: 1.5rem; }
+  .roster .chapter-kicker { font-size: 0.75rem; letter-spacing: 0.08em; }
+  .roster .chapter-title { max-width: none; font-size: clamp(1.75rem, 8vw, 2.15rem); line-height: 1.25; }
+  .roster .chapter-aside { max-width: none; line-height: 1.75; }
+  .roster .chapter-aside .aside-rule { display: none; }
+
+  .roster .filter-bar {
+    position: static;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 1rem 0.75rem;
+    margin-inline: 0;
+    padding: clamp(0.75rem, 3vw, 1rem);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    background: var(--paper-raised);
+    backdrop-filter: none;
+  }
+  .roster .filter-row { display: contents; }
+  .roster .filter-label,
+  .roster .chip-set,
+  .roster .filter-spacer { display: none; }
+  .roster .filter-search {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    min-width: 0;
+    min-height: 2.75rem;
+    margin: 0;
+    padding: 0 0.75rem;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    background: var(--paper);
+  }
+  .roster .filter-search:focus-within { border-color: var(--cinnabar); }
+  .roster .filter-search .icon { flex-shrink: 0; width: 1rem; height: 1rem; }
+  .roster .filter-search input { padding-block: 0.4rem; }
+  .roster .mobile-filter-fields {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+  .mobile-filter-field { position: relative; display: grid; min-width: 0; gap: 0.3rem; }
+  .mobile-filter-field > span { color: var(--ink-2); font-family: var(--font-ui); font-size: var(--text-support); }
+  .mobile-filter-field select {
+    appearance: none;
+    width: 100%;
+    min-width: 0;
+    min-height: 2.75rem;
+    padding: 0.5rem 2rem 0.5rem 0.75rem;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    background: transparent;
+    color: var(--ink);
+    font-family: var(--font-ui);
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  .mobile-filter-field select.is-active { border-color: var(--cinnabar); color: var(--cinnabar-deep); }
+  .mobile-filter-field::after {
+    content: "";
+    position: absolute;
+    inset-inline-end: 0.85rem;
+    inset-block-end: 1.15rem;
+    width: 0.4rem;
+    height: 0.4rem;
+    border-right: 1.5px solid var(--ink-2);
+    border-bottom: 1.5px solid var(--ink-2);
+    transform: rotate(45deg);
+    pointer-events: none;
+  }
+  .roster .filter-count { grid-column: 1; grid-row: 3; margin: 0; align-self: center; letter-spacing: 0; }
+  .roster .view-switch { grid-column: 2; grid-row: 3; padding: 0; border: 0; background: transparent; }
+  .roster .view-switch button { padding: 0.4rem 0.5rem; border-bottom: 2px solid transparent; }
+  .roster .view-switch button[aria-pressed="true"] { color: var(--cinnabar-deep); background: transparent; border-color: var(--cinnabar); }
+  .roster .index-grid,
+  .roster .footprints { margin-block-start: 1.5rem; }
 }
 
 /* Let the mobile cover grow with its text instead of overlapping the stamp. */

@@ -354,6 +354,8 @@
   const cards = grid ? $$(".dossier-card", grid) : [];
   const roleButtons = $$("#roleFilters .chip");
   const keywordButtons = $$("#keywordFilters .chip");
+  const mobileRoleFilter = $("#mobileRoleFilter");
+  const mobileKeywordFilter = $("#mobileKeywordFilter");
   const searchInput = $("#rosterSearch");
   const filterCount = $("#filterCount");
   const emptyState = $("#emptyState");
@@ -364,6 +366,21 @@
   const footprintList = $("#footprintList");
   const peopleData = Array.isArray(window.ARCHIVE_PEOPLE) ? window.ARCHIVE_PEOPLE : [];
   const filterState = { role: "all", keyword: "all", query: "", view: "cards" };
+  // Share option values and filter state across the desktop buttons and mobile selects.
+  [[mobileRoleFilter, roleButtons, "role"], [mobileKeywordFilter, keywordButtons, "keyword"]]
+    .forEach(([select, buttons, key]) => {
+      if (!select) return;
+      select.replaceChildren(...buttons.map(button => {
+        const option = document.createElement("option");
+        option.value = button.dataset[key];
+        option.textContent = button.textContent;
+        return option;
+      }));
+      select.addEventListener("change", () => {
+        filterState[key] = select.value;
+        applyFilters();
+      });
+    });
   let filterTimer = 0;
   const dossierText = new Map(
     (Array.isArray(window.ARCHIVE_PEOPLE) ? window.ARCHIVE_PEOPLE : []).map((person) => {
@@ -433,6 +450,13 @@
   function applyFilters({ animate = true } = {}) {
     if (!grid) return;
     window.clearTimeout(filterTimer);
+    roleButtons.forEach(item => item.setAttribute("aria-pressed", String(item.dataset.role === filterState.role)));
+    keywordButtons.forEach(item => item.setAttribute("aria-pressed", String(item.dataset.keyword === filterState.keyword)));
+    [[mobileRoleFilter, "role"], [mobileKeywordFilter, "keyword"]].forEach(([select, key]) => {
+      if (!select) return;
+      select.value = filterState[key];
+      select.classList.toggle("is-active", filterState[key] !== "all");
+    });
     const matches = cards.filter(cardMatches);
     const anyFilter =
       filterState.role !== "all" || filterState.keyword !== "all" || filterState.query !== "";
@@ -481,9 +505,6 @@
   roleButtons.forEach((button) => {
     button.addEventListener("click", () => {
       filterState.role = button.dataset.role;
-      roleButtons.forEach((item) =>
-        item.setAttribute("aria-pressed", String(item === button))
-      );
       applyFilters();
     });
   });
@@ -492,9 +513,6 @@
     button.addEventListener("click", () => {
       const next = button.dataset.keyword;
       filterState.keyword = filterState.keyword === next && next !== "all" ? "all" : next;
-      keywordButtons.forEach((item) =>
-        item.setAttribute("aria-pressed", String(item.dataset.keyword === filterState.keyword))
-      );
       applyFilters();
     });
   });
@@ -515,12 +533,6 @@
     filterState.keyword = "all";
     filterState.query = "";
     if (searchInput) searchInput.value = "";
-    roleButtons.forEach((item) =>
-      item.setAttribute("aria-pressed", String(item.dataset.role === "all"))
-    );
-    keywordButtons.forEach((item) =>
-      item.setAttribute("aria-pressed", String(item.dataset.keyword === "all"))
-    );
     applyFilters();
   }
 
@@ -591,8 +603,6 @@
         filterState.query = typeof saved.query === "string" ? saved.query : "";
         filterState.view = saved.view === "footprints" ? "footprints" : "cards";
         if (searchInput) searchInput.value = filterState.query;
-        roleButtons.forEach(b => b.setAttribute("aria-pressed", String(b.dataset.role === filterState.role)));
-        keywordButtons.forEach(b => b.setAttribute("aria-pressed", String(b.dataset.keyword === filterState.keyword)));
         viewButtons.forEach(b => b.setAttribute("aria-pressed", String(b.dataset.view === filterState.view)));
       }
     } catch { /* 忽略旧的或不可用的本地浏览状态。 */ }
