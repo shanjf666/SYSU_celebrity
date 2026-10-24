@@ -15,8 +15,9 @@
   let sizeIndex = 1;
 
   try {
-    const saved = Number(localStorage.getItem("sysu-reader-size"));
-    if (Number.isInteger(saved) && saved >= 0 && saved < sizes.length) sizeIndex = saved;
+    const storedSize = localStorage.getItem("sysu-reader-size");
+    const saved = Number(storedSize);
+    if (storedSize !== null && storedSize.trim() !== "" && Number.isInteger(saved) && saved >= 0 && saved < sizes.length) sizeIndex = saved;
   } catch {
     /* 忽略 */
   }

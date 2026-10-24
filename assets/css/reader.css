@@ -90,7 +90,7 @@
   align-items: center;
   justify-content: center;
   min-width: 2.1rem;
-  min-height: 2.1rem;
+  min-height: 2.5rem;
   padding: 0.35rem 0.55rem;
   border: 1px solid transparent;
   color: var(--ink-2);
@@ -114,7 +114,7 @@
   min-width: 2.6rem;
   color: var(--ink-2);
   font-family: var(--font-mono);
-  font-size: .8125rem;
+  font-size: .875rem;
   text-align: center;
 }
 
@@ -610,6 +610,7 @@
 }
 
 .source-list a {
+  overflow-wrap: anywhere;
   color: var(--ink-2);
   text-decoration-color: var(--line-strong);
   text-underline-offset: 0.2em;
@@ -660,6 +661,7 @@
 }
 
 .aside-person img {
+  flex-shrink: 0;
   width: 2.3rem;
   height: 2.3rem;
   object-fit: cover;
@@ -675,7 +677,7 @@
   display: block;
   color: var(--ink-2);
   font-family: var(--font-ui);
-  font-size: .8125rem;
+  font-size: .875rem;
   line-height: 1.5;
 }
 
@@ -724,7 +726,7 @@
   border-top: 1px solid var(--line);
   color: var(--ink-2);
   font-family: var(--font-ui);
-  font-size: .8125rem;
+  font-size: .875rem;
   text-align: center;
 }
 
@@ -851,7 +853,7 @@
 
   .reader-tool {
     min-width: 1.9rem;
-    min-height: 1.9rem;
+    min-height: 2.5rem;
     padding-inline: 0.4rem;
   }
 
@@ -913,4 +915,11 @@
 .portrait-plate img[src*="portrait-lin-haoran"],
 .portrait-plate img[src*="portrait-chen-xiaoming"] {
   filter: none;
+}
+
+@media (max-width: 760px) {
+  .reader-header { gap: 0.5rem; padding-inline: 1rem; }
+  .reader-back { gap: 0.25rem; }
+  .reader-tools { gap: 0.125rem; }
+  .reader-tool { min-width: 2.75rem; min-height: 2.75rem; }
 }

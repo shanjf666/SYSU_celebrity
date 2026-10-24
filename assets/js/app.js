@@ -197,9 +197,10 @@
   const navigationType =
     performance.getEntriesByType("navigation")[0]?.type || "navigate";
   const returningFromPerson =
-    navigationType === "back_forward" &&
-    (session.get("sysu-return-from-person") === "1" ||
-      /\/people\//.test(document.referrer || ""));
+    (navigationType === "back_forward" &&
+      (session.get("sysu-return-from-person") === "1" ||
+        /\/people\//.test(document.referrer || ""))) ||
+    (location.hash === "#roster" && session.get("sysu-return-from-person") === "1");
   if (hero) session.set("sysu-return-from-person", "0");
   let introTimers = [];
 
@@ -275,7 +276,7 @@
   }
 
   if (hero) {
-    if (returningFromPerson) finishIntro();
+    if (returningFromPerson || location.hash === "#roster") finishIntro();
     else playIntro();
   }
 
@@ -627,6 +628,19 @@
         eraTrack.scrollWidth - eraTrack.clientWidth
       );
       eraTrack.scrollTo({ left, behavior: reducedMotion ? "auto" : "smooth" });
+      // Only deliberate navigation brings an off-screen heading back into view.
+      // Horizontal swipes and resize synchronization keep the reader's vertical position.
+      if (next !== eraIndex && window.matchMedia("(max-width: 760px)").matches) {
+        const heading = $("h3", eraPanels[next]);
+        const headerHeight = siteHeader?.getBoundingClientRect().height || 0;
+        const rect = heading?.getBoundingClientRect();
+        if (rect && (rect.top < headerHeight + 16 || rect.bottom > window.innerHeight - 16)) {
+          window.scrollTo({
+            top: Math.max(0, window.scrollY + rect.top - headerHeight - 16),
+            behavior: reducedMotion ? "auto" : "smooth"
+          });
+        }
+      }
       if (Math.abs(eraTrack.scrollLeft - left) < 1) {
         eraTarget = null;
         syncEraIndex();
@@ -758,7 +772,10 @@
     button.addEventListener("click", () => setSpirit(button.dataset.spirit));
   });
   spiritReset?.addEventListener("click", (event) => {
-    if (!activeSpirit) return;
+    if (!activeSpirit) {
+      resetAllFilters();
+      return;
+    }
     event.preventDefault();
     setSpirit(activeSpirit);
   });
@@ -784,15 +801,19 @@
     }
   });
 
-  if (
-    location.hash === "#roster" &&
-    performance.getEntriesByType("navigation")[0]?.type === "back_forward"
-  ) {
-    const saved = Number(session.get("sysu-roster-scroll"));
-    if (Number.isFinite(saved) && saved > 0) {
+  if (returningFromPerson && grid) {
+    const storedScroll = session.get("sysu-roster-scroll");
+    const saved = Number(storedScroll);
+    if (storedScroll !== null && Number.isFinite(saved) && saved >= 0) {
       window.addEventListener(
         "load",
-        () => window.setTimeout(() => window.scrollTo(0, saved), 60),
+        () => window.setTimeout(() => {
+          const root = document.documentElement;
+          const previous = root.style.scrollBehavior;
+          root.style.scrollBehavior = "auto";
+          window.scrollTo(0, saved);
+          root.style.scrollBehavior = previous;
+        }, 60),
         { once: true }
       );
     }
